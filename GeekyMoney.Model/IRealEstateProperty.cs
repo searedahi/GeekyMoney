@@ -2,9 +2,24 @@
 
 namespace GeekyMoney.Model
 {
-    public interface IRealEstateProperty:IBaseGeekyObject
+    public interface IRealEstateProperty : IBaseGeekyObject
     {
-        decimal PropertyValue { get; set; }
+        // The current market value as we see it.
+        // ie "If we sold this..."
+        decimal MarketValue { get; set; }
+
+
+        // The purchase price we would/did pay.
+        decimal PurchasePrice { get; set; }
+
+        // The sum of all the monthly fees and expenses. 
+        // The set will be deprecated.  DONT USE!!!
+        decimal TotalMonthlyCost { get; set; }
+
+        // The square footage of the property.
+        decimal SqFt { get; set; }
+
+
         bool IsMultiUnit { get; set; }
         IEnumerable<IRealEstateProperty> Units { get; set; }
         IEnumerable<IRentalRate> RentSchedules { get; set; }

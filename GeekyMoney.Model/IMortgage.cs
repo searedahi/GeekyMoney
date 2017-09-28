@@ -7,6 +7,8 @@ namespace GeekyMoney.Model
     public interface IMortgage : IBaseGeekyObject
     {
         decimal PrincipleAmount { get; set; }
+        decimal CashToClose{ get; }
+
         decimal DownPayment { get; set; }
         // Calculated as PrinicipleAmount - DownPayment
         decimal LoanAmount { get; set; }

@@ -6,22 +6,12 @@ namespace GeekyMoney.Model
 {
     public class RealEstateScenarioKPI
     {
-        private decimal LoanAmount; //Loan Amount on the books.
-        private decimal PropertyRentalIncome; //Expected income 
-        private decimal PropertyCost; // The sum of all the monthly fees and expenses. 
-        private decimal PropertyPrice; //The purchase price.
-        private decimal MarketValue; //The current property value.
-        private decimal PropertySqFt;
+        private IRealEstateScenario _scenario;
 
 
-        public RealEstateScenarioKPI(decimal loanAmount, decimal monthlyIncome, decimal monthlyCost, decimal purchasePrice, decimal marketValue, decimal sqFt)
+        public RealEstateScenarioKPI(IRealEstateScenario scenario)
         {
-            LoanAmount = loanAmount;
-            PropertyRentalIncome = monthlyIncome;
-            PropertyCost = monthlyCost;
-            PropertyPrice = purchasePrice;
-            MarketValue = marketValue;
-            PropertySqFt = sqFt;
+            _scenario = scenario;
         }
 
         // Gross Rent Multiplier is the ratio of the price of a real estate investment 
@@ -31,9 +21,10 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return (PropertyPrice / AnnualRentalIncome) / 100; // Convert to percent
+                return (_scenario.RealEstateProperty.PurchasePrice / AnnualRentalIncome) / 100; // Convert to percent
             }
         }
+
         public string GrossRentMultiplierFormatted
         {
             get
@@ -41,13 +32,31 @@ namespace GeekyMoney.Model
                 return GrossRentMultiplier.ToString("P");
             }
         }
+
+        public decimal MonthlyRentalIncome
+        {
+            get
+            {
+                return _scenario.RentalRate.RentalAmount * 12;
+            }
+        }
+
+        public string MonthlyRentalIncomeFormatted
+        {
+            get
+            {
+                return MonthlyRentalIncome.ToString("C");
+            }
+        }
+
         public decimal AnnualRentalIncome
         {
             get
             {
-                return PropertyRentalIncome * 12; //Need a switch on schedule
+                return MonthlyRentalIncome * 12;
             }
         }
+
         public string AnnualRentalIncomeFormatted
         {
             get
@@ -60,7 +69,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return PropertyCost / PropertySqFt;
+                return _scenario.RealEstateProperty.TotalMonthlyCost / _scenario.RealEstateProperty.SqFt;
             }
         }
         public string CostPerSqFtFormatted
@@ -74,7 +83,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return PropertyPrice / PropertySqFt;
+                return _scenario.RealEstateProperty.PurchasePrice / _scenario.RealEstateProperty.SqFt;
             }
         }
         public string PricePerSqFtFormatted
@@ -88,7 +97,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return MarketValue / PropertySqFt;
+                return _scenario.RealEstateProperty.MarketValue / _scenario.RealEstateProperty.SqFt;
             }
         }
         public string MarketValuePerSqFtFormatted
@@ -103,7 +112,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return PropertyRentalIncome / PropertySqFt;
+                return MonthlyRentalIncome / _scenario.RealEstateProperty.SqFt;
             }
         }
         public string RentalRatePerSqFtFormatted
@@ -118,7 +127,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return LoanAmount / MarketValue;
+                return _scenario.Mortgage.LoanAmount / _scenario.RealEstateProperty.MarketValue;
             }
         }
         public string LoanToValueRatioFormatted
@@ -175,7 +184,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return (PropertyRentalIncome * 12) / (LoanAmount - MarketValuePerSqFt);
+                return AnnualRentalIncome/ (_scenario.Mortgage.DownPayment + _scenario.Mortgage.CashToClose);
             }
         }
         public string CashOnCashReturnFormatted
