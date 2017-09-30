@@ -1,0 +1,24 @@
+﻿<h1>Mortgages</h1>
+
+<p>This is all the mortgages we have or are using in scenarios.</p>
+
+<p *ngIf="!mortgages"><em>Loading Mortgages...</em></p>
+
+<table class='table' *ngIf="mortgages">
+    <thead>
+        <tr>
+            <th>Loan Amount</th>
+            <th>Down Payment</th>
+            <th>Closing Cost</th>
+            <th>Interest Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mort of mortgages">
+            <td>{{ mort.loanAmount }}</td>
+            <td>{{ mort.downPayment }}</td>
+            <td>{{ mort.closingCost }}</td>
+            <td>{{ mort.interestRate }}</td>
+        </tr>
+    </tbody>
+</table>

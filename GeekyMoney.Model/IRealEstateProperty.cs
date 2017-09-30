@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GeekyMoney.Model
 {
@@ -17,7 +18,7 @@ namespace GeekyMoney.Model
         decimal TotalMonthlyCost { get; set; }
 
         // The square footage of the property.
-        decimal SqFt { get; set; }
+        decimal SquareFeet { get; set; }
 
 
         bool IsMultiUnit { get; set; }
@@ -29,5 +30,6 @@ namespace GeekyMoney.Model
         decimal PropertyTaxAmount { get; set; }
         IEnumerable<IFee> PropertyFees { get; set; }
         decimal AppreciationRate { get; set; }
+        DateTime ListingDate { get; set; }
     }
 }

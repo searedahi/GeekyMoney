@@ -69,7 +69,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return _scenario.RealEstateProperty.TotalMonthlyCost / _scenario.RealEstateProperty.SqFt;
+                return _scenario.RealEstateProperty.TotalMonthlyCost / _scenario.RealEstateProperty.SquareFeet;
             }
         }
         public string CostPerSqFtFormatted
@@ -83,7 +83,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return _scenario.RealEstateProperty.PurchasePrice / _scenario.RealEstateProperty.SqFt;
+                return _scenario.RealEstateProperty.PurchasePrice / _scenario.RealEstateProperty.SquareFeet;
             }
         }
         public string PricePerSqFtFormatted
@@ -97,7 +97,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return _scenario.RealEstateProperty.MarketValue / _scenario.RealEstateProperty.SqFt;
+                return _scenario.RealEstateProperty.MarketValue / _scenario.RealEstateProperty.SquareFeet;
             }
         }
         public string MarketValuePerSqFtFormatted
@@ -112,7 +112,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return MonthlyRentalIncome / _scenario.RealEstateProperty.SqFt;
+                return MonthlyRentalIncome / _scenario.RealEstateProperty.SquareFeet;
             }
         }
         public string RentalRatePerSqFtFormatted

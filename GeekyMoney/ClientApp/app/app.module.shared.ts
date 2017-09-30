@@ -7,16 +7,18 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { RealEstatePropertyComponent } from './components/realestateproperty/realestateproperty.component';
+import { MortgageComponent } from './components/mortgage/mortgage.component'
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         CounterComponent,
-        FetchDataComponent,
-        HomeComponent
+        HomeComponent,
+        RealEstatePropertyComponent,
+        MortgageComponent
     ],
     imports: [
         CommonModule,
@@ -26,7 +28,8 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'realestateproperty', component: RealEstatePropertyComponent },
+            { path: 'mortgage', component: MortgageComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
