@@ -21,7 +21,7 @@ namespace GeekyMoney.Angular.Controllers
         }
 
 
-        // GET: api/RealEstate
+        // GET: api/RealEstateProperty
         [HttpGet]
         public IEnumerable<RealEstateProperty> Get()
         {
@@ -29,6 +29,7 @@ namespace GeekyMoney.Angular.Controllers
 
             result.Add(new RealEstateProperty
             {
+                ID = Guid.NewGuid(),
                 PropertyPrice = 100000,
                 MarketValue = 100000,
                 ListingDate = DateTime.Now.AddMonths(-6),
@@ -37,6 +38,7 @@ namespace GeekyMoney.Angular.Controllers
             });
             result.Add(new RealEstateProperty
             {
+                ID = Guid.NewGuid(),
                 PropertyPrice = 200000,
                 MarketValue = 200000,
                 ListingDate = DateTime.Now.AddMonths(-9),
@@ -46,26 +48,34 @@ namespace GeekyMoney.Angular.Controllers
             return result;
         }
 
-        // GET: api/RealEstate/5
+        // GET: api/RealEstateProperty/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public RealEstateProperty Get(string id)
         {
-            return "value";
+            return new RealEstateProperty
+            {
+                ID = Guid.NewGuid(),
+                PropertyPrice = 100000,
+                MarketValue = 100000,
+                ListingDate = DateTime.Now.AddMonths(-6),
+                SquareFeet = 1000
+
+            };
         }
 
-        // POST: api/RealEstate
+        // POST: api/RealEstateProperty
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]RealEstateProperty value)
         {
         }
 
-        // PUT: api/RealEstate/5
+        // PUT: api/RealEstateProperty/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/RealEstateProperty/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -1,0 +1,40 @@
+﻿<h1>Real Estate Properties</h1>
+
+<p>This is all the properties we're monitoring right now.</p>
+
+<p *ngIf="!realEstateProperties"><em>Loading Properties...</em></p>
+
+<table class='table' *ngIf="realEstateProperties">
+    <thead>
+        <tr>
+            <td colspan="7">
+                <button class="btn btn-success" [routerLink]="['/realestateproperty/0']">
+                    <span class="glyphicon glyphicon-pencil paddingRight"></span> Add
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th>Listed</th>
+            <th>Purchase Price</th>
+            <th>Market Value</th>
+            <th>Square Feet</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let realProp of realEstateProperties">
+            <td>{{ realProp.listingDate }}</td>
+            <td>{{ realProp.purchasePrice }}</td>
+            <td>{{ realProp.marketValue }}</td>
+            <td>{{ realProp.squareFeet }}</td>
+            <td>
+                <button class="btn btn-warning" [routerLink]="['/realestateproperty/' + realProp.id]">
+                    <span class="glyphicon glyphicon-pencil paddingRight"></span> Edit
+                </button>
+                <button class="btn btn-danger" (click)="onDelete(realProp.id)">
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
+    <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
@@ -32,6 +37,12 @@
     <ProjectReference Include="..\GeekyMoney.Calculator\GeekyMoney.Calculator.csproj" />
     <ProjectReference Include="..\GeekyMoney.Data\GeekyMoney.Data.csproj" />
     <ProjectReference Include="..\GeekyMoney.Model\GeekyMoney.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\detail\realestateproperty.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

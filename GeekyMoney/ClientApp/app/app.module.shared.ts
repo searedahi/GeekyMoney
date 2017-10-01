@@ -8,7 +8,9 @@ import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
-import { RealEstatePropertyComponent } from './components/realestateproperty/realestateproperty.component';
+import { RealEstatePropertiesComponent } from './components/realestateproperty/realestateproperties.component';
+import { RealEstatePropertyComponent } from './components/realestateproperty/detail/realestateproperty.component';
+
 import { MortgageComponent } from './components/mortgage/mortgage.component'
 
 @NgModule({
@@ -17,6 +19,7 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
         NavMenuComponent,
         CounterComponent,
         HomeComponent,
+        RealEstatePropertiesComponent,
         RealEstatePropertyComponent,
         MortgageComponent
     ],
@@ -28,7 +31,8 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
-            { path: 'realestateproperty', component: RealEstatePropertyComponent },
+            { path: 'realestateproperties', component: RealEstatePropertiesComponent },
+            { path: 'realestateproperty/:id', component: RealEstatePropertyComponent },
             { path: 'mortgage', component: MortgageComponent },
             { path: '**', redirectTo: 'home' }
         ])
