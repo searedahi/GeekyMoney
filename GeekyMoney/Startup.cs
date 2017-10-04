@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using GeekyMoney.Data;
 using Microsoft.EntityFrameworkCore;
+using GeekyMoney.Services;
+using AutoMapper;
 
 namespace GeekyMoney
 {
@@ -29,7 +31,8 @@ namespace GeekyMoney
                 ));
 
             services.AddMvc();
-
+            services.AddAutoMapper();
+            services.AddTransient<IRealEstatePropertyService, RealEstatePropertyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

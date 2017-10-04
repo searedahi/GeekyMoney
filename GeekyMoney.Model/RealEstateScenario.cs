@@ -8,7 +8,7 @@ namespace GeekyMoney.Model
     {
         public IMortgage Mortgage { get; set; }
         public IRealEstateProperty RealEstateProperty { get; set; }
-        public Guid ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public IRentalRate RentalRate { get; set; }

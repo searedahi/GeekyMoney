@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using GeekyMoney.Data;
 using GeekyMoney.Model;
+using GeekyMoney.Services;
+using AutoMapper;
 
 namespace GeekyMoney.Angular.Controllers
 {
@@ -13,72 +15,52 @@ namespace GeekyMoney.Angular.Controllers
     [Route("api/[controller]")]
     public class RealEstatePropertyController : Controller
     {
-        private GeekyMoneyContext _context;
-
-        public RealEstatePropertyController(GeekyMoneyContext context)
+        RealEstatePropertyService _service;
+        public RealEstatePropertyController(GeekyMoneyContext context, IMapper mapper)
         {
-            _context = context;
+            _service = new RealEstatePropertyService(context, mapper);
         }
-
 
         // GET: api/RealEstateProperty
         [HttpGet]
-        public IEnumerable<RealEstateProperty> Get()
+        public IEnumerable<IRealEstateProperty> Get()
         {
-            var result = new List<RealEstateProperty>();
-
-            result.Add(new RealEstateProperty
-            {
-                ID = Guid.NewGuid(),
-                PropertyPrice = 100000,
-                MarketValue = 100000,
-                ListingDate = DateTime.Now.AddMonths(-6),
-                SquareFeet = 1000
-
-            });
-            result.Add(new RealEstateProperty
-            {
-                ID = Guid.NewGuid(),
-                PropertyPrice = 200000,
-                MarketValue = 200000,
-                ListingDate = DateTime.Now.AddMonths(-9),
-                SquareFeet = 2000
-
-            });
-            return result;
+            return _service.GetAll();
         }
 
         // GET: api/RealEstateProperty/5
         [HttpGet("{id}", Name = "Get")]
-        public RealEstateProperty Get(string id)
+        public IRealEstateProperty Get(string id)
         {
-            return new RealEstateProperty
-            {
-                ID = Guid.NewGuid(),
-                PropertyPrice = 100000,
-                MarketValue = 100000,
-                ListingDate = DateTime.Now.AddMonths(-6),
-                SquareFeet = 1000
-
-            };
+            return _service.Get(id);
         }
 
         // POST: api/RealEstateProperty
         [HttpPost]
-        public void Post([FromBody]RealEstateProperty value)
+        public IRealEstateProperty Post([FromBody]RealEstateProperty value)
         {
+            var result = _service.Save(value);
+            return result;
         }
 
         // PUT: api/RealEstateProperty/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IRealEstateProperty Put(int id, [FromBody]RealEstateProperty value)
         {
+            var result = _service.Update(value);
+            return result;
         }
 
         // DELETE: api/RealEstateProperty/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var result = false;
+
+            result = _service.Delete(id);
+
+            return Ok();
+
         }
     }
 }

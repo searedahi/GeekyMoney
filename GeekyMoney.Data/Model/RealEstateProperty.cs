@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace GeekyMoney.Model
+namespace GeekyMoney.Data.Model
 {
-    public class RealEstateProperty : IRealEstateProperty
+    public class RealEstateProperty : BaseGeekyDataModel
     {
-        public int ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
         public decimal AskingPrice { get; set; }
         public decimal MarketValue { get; set; }
         public decimal PurchasePrice { get; set; }
@@ -29,17 +24,8 @@ namespace GeekyMoney.Model
         public string RedFinId { get; set; }
         public string TruliaId { get; set; }
 
-        public IEnumerable<IRealEstateProperty> Units { get; set; }
-        public IEnumerable<IRentalRate> RentSchedules { get; set; }
-        public IEnumerable<IFee> PropertyFees { get; set; }
-
-
-        public RealEstateProperty()
-        {
-            Units = new List<IRealEstateProperty>();
-            RentSchedules = new List<IRentalRate>();
-            PropertyFees = new List<IFee>();
-        }
-
+        public virtual IEnumerable<Fee> PropertyFees { get; set; }
+        public virtual IEnumerable<RealEstateProperty> Units { get; set; }
+        public virtual IEnumerable<RentalRate> RentSchedules { get; set; }
     }
 }

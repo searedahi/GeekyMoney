@@ -31,9 +31,4 @@ export class RealEstatePropertiesComponent {
             error => console.log(error)
         );
     }
-
-
 }
-
-
-

@@ -5,12 +5,12 @@ import { RealEstateProperty } from '../realestateproperty.model';
 import { RealEstatePropertyService } from '../realestateproperty.service';
 
 @Component({
-    selector: 'realestateproperty',
-    templateUrl: './realestateproperty.component.html',
+    selector: 'realestateproperty/delete',
+    templateUrl: './realestatepropertydelete.component.html',
     providers: [RealEstatePropertyService],
     styleUrls: ['../realestateproperty.component.css']
 })
-export class RealEstatePropertyComponent {
+export class RealEstatePropertyDeleteComponent {
 
     public realEstateProperty: RealEstateProperty = new RealEstateProperty();
     private id: string;
@@ -30,16 +30,13 @@ export class RealEstatePropertyComponent {
 
     }
 
-    save() {
-        this.realEstatePropertyService.postData(this.realEstateProperty)
-            .subscribe(
-            (response) => {
-                console.log(response);
-                this.list();
-            },
-            (error) => console.log(error)
-            );
-    }
+    onDelete(id: number) {
+        this.realEstatePropertyService.deleteData(id).subscribe(data => {
+            this.list();
+        },
+            error => console.log(error)
+        );
+    }  
 
     list() {
         this.redirect.navigateByUrl('/realestateproperties');

@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
   </ItemGroup>
@@ -35,12 +37,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GeekyMoney.Calculator\GeekyMoney.Calculator.csproj" />
-    <ProjectReference Include="..\GeekyMoney.Data\GeekyMoney.Data.csproj" />
     <ProjectReference Include="..\GeekyMoney.Model\GeekyMoney.Model.csproj" />
+    <ProjectReference Include="..\GeekyMoney.Services\GeekyMoney.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\detail\realestateproperty.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\delete\realestatepropertydelete.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\edit\realestatepropertyedit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
   </ItemGroup>

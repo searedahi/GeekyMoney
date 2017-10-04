@@ -7,20 +7,20 @@ namespace GeekyMoney.Model
 {
     public class FixedRateMortgage : IMortgage
     {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+
         public decimal PrincipleAmount { get; set; }
         public decimal DownPayment { get; set; }
         public decimal LoanAmount { get; set; }
-        public double Term { get; set; }
+        public double TermInMonths { get; set; }
+        public double TermInYears { get; set; }
         public decimal InterestRate { get; set; }
+        public decimal MonthlyPayment { get; private set; }
+
         public IEnumerable<IFee> LoanFees { get; set; }
-
-        public decimal MonthlyPayment => throw new NotImplementedException();
-
-        public IEnumerable<IPayment> AmortizationSchedule => throw new NotImplementedException();
-
-        public Guid ID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public IEnumerable<IPayment> AmortizationSchedule { get; private set; }
 
         public decimal CashToClose
         {
@@ -30,5 +30,7 @@ namespace GeekyMoney.Model
                 return cashNeeded;
             }
         }
+
+
     }
 }

@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let realProp of realEstateProperties">
-            <td>{{ realProp.listingDate }}</td>
+            <td>{{ realProp.listed }}</td>
             <td>{{ realProp.purchasePrice }}</td>
             <td>{{ realProp.marketValue }}</td>
             <td>{{ realProp.squareFeet }}</td>
@@ -31,7 +31,7 @@
                 <button class="btn btn-warning" [routerLink]="['/realestateproperty/' + realProp.id]">
                     <span class="glyphicon glyphicon-pencil paddingRight"></span> Edit
                 </button>
-                <button class="btn btn-danger" (click)="onDelete(realProp.id)">
+                <button class="btn btn-danger" [routerLink]="['/realestateproperty/delete/' + realProp.id]" >
                     <span class="glyphicon glyphicon-remove"></span> Delete
                 </button>
             </td>

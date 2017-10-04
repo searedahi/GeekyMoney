@@ -1,4 +1,4 @@
-﻿using GeekyMoney.Data.DTO;
+﻿using GeekyMoney.Data.Model;
 using Microsoft.EntityFrameworkCore;
 
 

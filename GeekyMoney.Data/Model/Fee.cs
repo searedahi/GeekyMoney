@@ -1,6 +1,6 @@
-﻿namespace GeekyMoney.Data.DTO
+﻿namespace GeekyMoney.Data.Model
 {
-    public class Fee : BaseGeekyDto
+    public class Fee : BaseGeekyDataModel
     {
         public decimal Amount { get; set; }
         public bool IsDeductible { get; set; }

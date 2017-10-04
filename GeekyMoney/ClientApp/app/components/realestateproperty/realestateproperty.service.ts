@@ -28,4 +28,15 @@ export class RealEstatePropertyService {
         return this.http.post('/api/RealEstateProperty', realProp);
     }  
 
+    putData(realProp: RealEstateProperty) {
+        return this.http.put('/api/RealEstateProperty/' + realProp.id, realProp);
+    }  
+
+    deleteData(id: number) {
+        return this.http.delete('/api/RealEstateProperty/' + id, new RequestOptions({
+            headers: this.headers,
+            body: id
+        }));
+    } 
+
 }  

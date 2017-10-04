@@ -12,8 +12,13 @@ namespace GeekyMoney.Model
         decimal DownPayment { get; set; }
         // Calculated as PrinicipleAmount - DownPayment
         decimal LoanAmount { get; set; }
+
+        // The term of the loan in years
+        double TermInYears { get; set; }
+
         // The term of the loan in months
-        double Term { get; set; }
+        double TermInMonths { get; set; }
+
         decimal InterestRate { get; set; }
         IEnumerable<IFee> LoanFees { get; set; }
 

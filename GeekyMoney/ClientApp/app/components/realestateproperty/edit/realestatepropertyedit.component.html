@@ -4,7 +4,11 @@
 <div class="margin-top-05">
     <div class="row margin-top-05">
         <div class="col-xs-2"><strong> Listing Date : </strong></div>
-        <div class="col-xs-6"><input [(ngModel)]="realEstateProperty.listingDate" required /> </div>
+        <div class="col-xs-6"><input [(ngModel)]="realEstateProperty.listed" required /> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Asking Price : </strong></div>
+        <div class="col-xs-6"><input [(ngModel)]="realEstateProperty.askingPrice" /> </div>
     </div>
     <div class="row margin-top-05">
         <div class="col-xs-2"><strong> Purchase Price : </strong></div>
@@ -13,6 +17,10 @@
     <div class="row margin-top-05">
         <div class="col-xs-2"><strong> Market Value : </strong></div>
         <div class="col-xs-6"><input [(ngModel)]="realEstateProperty.marketValue" /> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Square Feet : </strong></div>
+        <div class="col-xs-6"><input [(ngModel)]="realEstateProperty.squareFeet" /> </div>
     </div>
     <div class="row margin-top-05">
         <div class="col-xs-2"><strong> Address : </strong></div>

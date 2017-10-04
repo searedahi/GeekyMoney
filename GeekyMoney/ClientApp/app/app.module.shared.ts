@@ -9,7 +9,8 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { RealEstatePropertiesComponent } from './components/realestateproperty/realestateproperties.component';
-import { RealEstatePropertyComponent } from './components/realestateproperty/detail/realestateproperty.component';
+import { RealEstatePropertyComponent } from './components/realestateproperty/edit/realestateproperty.component';
+import { RealEstatePropertyDeleteComponent } from './components/realestateproperty/delete/realestatepropertydelete.component';
 
 import { MortgageComponent } from './components/mortgage/mortgage.component'
 
@@ -21,6 +22,7 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
         HomeComponent,
         RealEstatePropertiesComponent,
         RealEstatePropertyComponent,
+        RealEstatePropertyDeleteComponent,
         MortgageComponent
     ],
     imports: [
@@ -32,7 +34,8 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'realestateproperties', component: RealEstatePropertiesComponent },
-            { path: 'realestateproperty/:id', component: RealEstatePropertyComponent },
+            { path: 'realestateproperty/edit/:id', component: RealEstatePropertyComponent },
+            { path: 'realestateproperty/delete/:id', component: RealEstatePropertyDeleteComponent },
             { path: 'mortgage', component: MortgageComponent },
             { path: '**', redirectTo: 'home' }
         ])

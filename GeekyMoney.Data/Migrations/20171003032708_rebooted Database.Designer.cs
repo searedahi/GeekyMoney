@@ -11,8 +11,8 @@ using System;
 namespace GeekyMoney.Data.Migrations
 {
     [DbContext(typeof(GeekyMoneyContext))]
-    [Migration("20170924185755_InitialStabAtIt")]
-    partial class InitialStabAtIt
+    [Migration("20171003032708_rebooted Database")]
+    partial class rebootedDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace GeekyMoney.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.Fee", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.Fee", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<decimal>("Amount");
@@ -34,7 +34,7 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<Guid?>("RealEstatePropertyID");
+                    b.Property<int?>("RealEstatePropertyID");
 
                     b.Property<int>("ScheduleTypeID");
 
@@ -45,18 +45,30 @@ namespace GeekyMoney.Data.Migrations
                     b.ToTable("Fee");
                 });
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.RealEstateProperty", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.RealEstateProperty", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
                     b.Property<decimal>("AppreciationRate");
+
+                    b.Property<decimal>("AskingPrice");
+
+                    b.Property<DateTime>("Built");
+
+                    b.Property<DateTime>("Created");
 
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsMultiUnit");
 
+                    b.Property<DateTime>("Listed");
+
                     b.Property<string>("MLSID");
+
+                    b.Property<decimal>("MarketValue");
 
                     b.Property<string>("Name");
 
@@ -66,9 +78,19 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<decimal>("PropertyTaxRate");
 
-                    b.Property<decimal>("PropertyValue");
+                    b.Property<decimal>("PurchasePrice");
 
-                    b.Property<Guid?>("RealEstatePropertyID");
+                    b.Property<int?>("RealEstatePropertyID");
+
+                    b.Property<string>("RedFinId");
+
+                    b.Property<decimal>("SquareFeet");
+
+                    b.Property<decimal>("TotalMonthlyCost");
+
+                    b.Property<string>("TruliaId");
+
+                    b.Property<string>("ZillowId");
 
                     b.HasKey("ID");
 
@@ -77,16 +99,16 @@ namespace GeekyMoney.Data.Migrations
                     b.ToTable("RealEstateProperty");
                 });
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.RentalRate", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.RentalRate", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
-                    b.Property<Guid?>("RealEstatePropertyID");
+                    b.Property<int?>("RealEstatePropertyID");
 
                     b.Property<decimal>("RentalAmount");
 
@@ -99,23 +121,23 @@ namespace GeekyMoney.Data.Migrations
                     b.ToTable("RentalRate");
                 });
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.Fee", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.Fee", b =>
                 {
-                    b.HasOne("GeekyMoney.Data.DTO.RealEstateProperty")
+                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
                         .WithMany("PropertyFees")
                         .HasForeignKey("RealEstatePropertyID");
                 });
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.RealEstateProperty", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.RealEstateProperty", b =>
                 {
-                    b.HasOne("GeekyMoney.Data.DTO.RealEstateProperty")
+                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
                         .WithMany("Units")
                         .HasForeignKey("RealEstatePropertyID");
                 });
 
-            modelBuilder.Entity("GeekyMoney.Data.DTO.RentalRate", b =>
+            modelBuilder.Entity("GeekyMoney.Data.Model.RentalRate", b =>
                 {
-                    b.HasOne("GeekyMoney.Data.DTO.RealEstateProperty")
+                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
                         .WithMany("RentSchedules")
                         .HasForeignKey("RealEstatePropertyID");
                 });

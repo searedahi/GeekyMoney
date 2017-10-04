@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Model", "GeekyMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Calculator", "GeekyMoney.Calculator\GeekyMoney.Calculator.csproj", "{8EC5FC4C-FBA5-4942-BCAF-523FF9B5AC57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekyMoney.Data", "GeekyMoney.Data\GeekyMoney.Data.csproj", "{57F1C3B8-FE3B-4963-8178-809BD1A77ACD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Data", "GeekyMoney.Data\GeekyMoney.Data.csproj", "{57F1C3B8-FE3B-4963-8178-809BD1A77ACD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Services", "GeekyMoney.Services\GeekyMoney.Services.csproj", "{D67DBDA6-9798-4293-A9EC-F9CA7EFD7AA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{57F1C3B8-FE3B-4963-8178-809BD1A77ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57F1C3B8-FE3B-4963-8178-809BD1A77ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57F1C3B8-FE3B-4963-8178-809BD1A77ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67DBDA6-9798-4293-A9EC-F9CA7EFD7AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67DBDA6-9798-4293-A9EC-F9CA7EFD7AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67DBDA6-9798-4293-A9EC-F9CA7EFD7AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67DBDA6-9798-4293-A9EC-F9CA7EFD7AA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
