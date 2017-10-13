@@ -8,7 +8,7 @@ namespace GeekyMoney.Model
     {
         public decimal Amount { get; set; }
         public bool IsDeductible { get; set; }
-        public ScheduleType Schedule { get; set; }
+        public int ScheduleTypeID { get; set; }
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

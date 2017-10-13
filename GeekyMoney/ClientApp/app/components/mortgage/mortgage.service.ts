@@ -3,12 +3,12 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { RealEstateProperty } from '../_model/realestateproperty.model'
+import { Mortgage } from './mortgage.model'
 
 @Injectable()
-export class RealEstatePropertyService {
+export class MortgageService {
 
-    public myDetail: RealEstateProperty;
+    //public myDetail: Mortgage;
     public headers: Headers
 
     constructor(private http: Http) {
@@ -17,23 +17,23 @@ export class RealEstatePropertyService {
     }
 
     getData() {
-        return this.http.get('/api/RealEstateProperty');
+        return this.http.get('/api/Mortgage');
     }
 
     getDetail(id: string) {        
-        return this.http.get('/api/RealEstateProperty/' + id);
+        return this.http.get('/api/Mortgage/' + id);
     }
 
-    postData(realProp: RealEstateProperty) {
-        return this.http.post('/api/RealEstateProperty', realProp);
+    postData(mortgage: Mortgage) {
+        return this.http.post('/api/Mortgage', mortgage);
     }  
 
-    putData(realProp: RealEstateProperty) {
-        return this.http.put('/api/RealEstateProperty/' + realProp.id, realProp);
+    putData(mortgage: Mortgage) {
+        return this.http.put('/api/Mortgage/' + mortgage.id, mortgage);
     }  
 
     deleteData(id: number) {
-        return this.http.delete('/api/RealEstateProperty/' + id, new RequestOptions({
+        return this.http.delete('/api/Mortgage/' + id, new RequestOptions({
             headers: this.headers,
             body: id
         }));

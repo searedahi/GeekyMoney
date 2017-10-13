@@ -3,6 +3,7 @@ using GeekyMoney.Model;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace GeekyMoney.Services
 {
@@ -19,9 +20,11 @@ namespace GeekyMoney.Services
         }
 
 
-        public IRealEstateProperty Get(string id)
+        public IRealEstateProperty Get(int id)
         {
-            var dbRealProp = _context.RealEstateProperty.FirstOrDefault(p => p.ID.ToString().Equals(id));
+            var dbRealProp = _context.RealEstateProperty
+                .Include(p=>p.PropertyFees)
+                .FirstOrDefault(p => p.ID.Equals(id));
             var domModel = _mapper.Map<Data.Model.RealEstateProperty, RealEstateProperty>(dbRealProp);
             return domModel;
         }
@@ -39,7 +42,7 @@ namespace GeekyMoney.Services
             return realProperties;
         }
 
-        public IRealEstateProperty Save(IRealEstateProperty newRealEstateProperty)
+        public IRealEstateProperty Create(IRealEstateProperty newRealEstateProperty)
         {
             var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(newRealEstateProperty as RealEstateProperty);
 

@@ -33,6 +33,8 @@ namespace GeekyMoney
             services.AddMvc();
             services.AddAutoMapper();
             services.AddTransient<IRealEstatePropertyService, RealEstatePropertyService>();
+            services.AddTransient<IFeeService, FeeService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

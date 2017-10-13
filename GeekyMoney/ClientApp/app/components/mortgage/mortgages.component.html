@@ -1,0 +1,40 @@
+﻿<h1>Mortgage Inventory</h1>
+
+<p>These are all the mortgages in our portfolio right now.</p>
+
+<p *ngIf="!mortgages"><em>Loading Mortgages...</em></p>
+
+<table class='table' *ngIf="mortgages">
+    <thead>
+        <tr>
+            <td colspan="7">
+                <button class="btn btn-success" [routerLink]="['/mortgage/edit/0']">
+                    <span class="glyphicon glyphicon-plus-sign paddingRight"></span> Add
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Loan Amount</th>
+            <th>Interest Rate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mort of mortgages">
+            <td>{{ mort.name }}</td>
+            <td>{{ mort.description}}</td>
+            <td>{{ mort.loanAmount }}</td>
+            <td>{{ mort.interestRate }}</td>
+            <td>
+                <button class="btn btn-warning" [routerLink]="['/mortgage/edit/' + mort.id]">
+                    <span class="glyphicon glyphicon-pencil paddingRight"></span> Edit
+                </button>
+                <button class="btn btn-danger" [routerLink]="['/mortgage/delete/' + mort.id]" >
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

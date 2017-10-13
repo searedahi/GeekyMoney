@@ -29,16 +29,16 @@ namespace GeekyMoney.Model
         public string RedFinId { get; set; }
         public string TruliaId { get; set; }
 
-        public IEnumerable<IRealEstateProperty> Units { get; set; }
-        public IEnumerable<IRentalRate> RentSchedules { get; set; }
-        public IEnumerable<IFee> PropertyFees { get; set; }
+        //public IEnumerable<RealEstateProperty> Units { get; set; }
+        //public IEnumerable<IRentalRate> RentSchedules { get; set; }
+        public IEnumerable<Fee> PropertyFees { get; set; }
 
 
         public RealEstateProperty()
         {
-            Units = new List<IRealEstateProperty>();
-            RentSchedules = new List<IRentalRate>();
-            PropertyFees = new List<IFee>();
+            //Units = new List<RealEstateProperty>();
+            //RentSchedules = new List<IRentalRate>();
+            PropertyFees = new List<Fee>();
         }
 
     }

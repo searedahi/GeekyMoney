@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { RealEstateProperty } from '../realestateproperty.model';
+import { RealEstateProperty } from '../../_model/realestateproperty.model';
 import { RealEstatePropertyService } from '../realestateproperty.service';
 
 @Component({

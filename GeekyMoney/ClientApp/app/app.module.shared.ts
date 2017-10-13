@@ -9,10 +9,15 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { RealEstatePropertiesComponent } from './components/realestateproperty/realestateproperties.component';
-import { RealEstatePropertyComponent } from './components/realestateproperty/edit/realestateproperty.component';
+import { RealEstatePropertyEditComponent } from './components/realestateproperty/edit/realestatepropertyedit.component';
 import { RealEstatePropertyDeleteComponent } from './components/realestateproperty/delete/realestatepropertydelete.component';
 
-import { MortgageComponent } from './components/mortgage/mortgage.component'
+import { MortgagesComponent } from './components/mortgage/mortgages.component'
+import { MortgageEditComponent } from './components/mortgage/edit/mortgageedit.component'
+import { MortgageDeleteComponent } from './components/mortgage/delete/mortgagedelete.component'
+
+import { FeesComponent } from './components/fee/fees.component';
+
 
 @NgModule({
     declarations: [
@@ -21,9 +26,12 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
         CounterComponent,
         HomeComponent,
         RealEstatePropertiesComponent,
-        RealEstatePropertyComponent,
+        RealEstatePropertyEditComponent,
         RealEstatePropertyDeleteComponent,
-        MortgageComponent
+        MortgagesComponent,
+        MortgageEditComponent,
+        MortgageDeleteComponent,
+        FeesComponent
     ],
     imports: [
         CommonModule,
@@ -34,9 +42,13 @@ import { MortgageComponent } from './components/mortgage/mortgage.component'
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'realestateproperties', component: RealEstatePropertiesComponent },
-            { path: 'realestateproperty/edit/:id', component: RealEstatePropertyComponent },
+            { path: 'realestateproperty/edit/:id', component: RealEstatePropertyEditComponent },
             { path: 'realestateproperty/delete/:id', component: RealEstatePropertyDeleteComponent },
-            { path: 'mortgage', component: MortgageComponent },
+            { path: 'mortgages', component: MortgagesComponent },
+            { path: 'mortgage/edit/:id', component: MortgageEditComponent },
+            { path: 'mortgage/delete/:id', component: MortgageDeleteComponent },
+            { path: 'fees', component: FeesComponent },
+
             { path: '**', redirectTo: 'home' }
         ])
     ]

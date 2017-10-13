@@ -35,9 +35,9 @@ namespace GeekyMoney.Model
         string RedFinId { get; set; }
         string TruliaId { get; set; }
 
-        IEnumerable<IFee> PropertyFees { get; set; }
-        IEnumerable<IRealEstateProperty> Units { get; set; }
-        IEnumerable<IRentalRate> RentSchedules { get; set; }
+        IEnumerable<Fee> PropertyFees { get; set; }
+        //IEnumerable<IRealEstateProperty> Units { get; set; }
+        //IEnumerable<IRentalRate> RentSchedules { get; set; }
 
     }
 }

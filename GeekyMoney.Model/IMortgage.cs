@@ -7,7 +7,7 @@ namespace GeekyMoney.Model
     public interface IMortgage : IBaseGeekyObject
     {
         decimal PrincipleAmount { get; set; }
-        decimal CashToClose{ get; }
+        decimal CashToClose { get; }
 
         decimal DownPayment { get; set; }
         // Calculated as PrinicipleAmount - DownPayment
@@ -20,10 +20,10 @@ namespace GeekyMoney.Model
         double TermInMonths { get; set; }
 
         decimal InterestRate { get; set; }
-        IEnumerable<IFee> LoanFees { get; set; }
 
         // Calculated using the PaymentService
         decimal MonthlyPayment { get; }
         IEnumerable<IPayment> AmortizationSchedule { get; }
+        IEnumerable<IFee> LoanFees { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace GeekyMoney.Model
 
         public RealEstateScenario(bool isFakeConstructorFOrSpeed)
         {
-            Mortgage = new FixedRateMortgage();
+            Mortgage = new Mortgage();
             RealEstateProperty = new RealEstateProperty();
         }
     }

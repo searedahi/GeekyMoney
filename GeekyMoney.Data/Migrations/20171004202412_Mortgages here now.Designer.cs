@@ -11,9 +11,10 @@ using System;
 namespace GeekyMoney.Data.Migrations
 {
     [DbContext(typeof(GeekyMoneyContext))]
-    partial class GeekyMoneyContextModelSnapshot : ModelSnapshot
+    [Migration("20171004202412_Mortgages here now")]
+    partial class Mortgagesherenow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +32,6 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<bool>("IsDeductible");
 
-                    b.Property<int?>("MortgageID");
-
                     b.Property<string>("Name");
 
                     b.Property<int?>("RealEstatePropertyID");
@@ -40,8 +39,6 @@ namespace GeekyMoney.Data.Migrations
                     b.Property<int>("ScheduleTypeID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("MortgageID");
 
                     b.HasIndex("RealEstatePropertyID");
 
@@ -55,19 +52,7 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<decimal>("DownPayment");
-
-                    b.Property<decimal>("InterestRate");
-
-                    b.Property<decimal>("LoanAmount");
-
                     b.Property<string>("Name");
-
-                    b.Property<decimal>("PrincipleAmount");
-
-                    b.Property<double>("TermInMonths");
-
-                    b.Property<double>("TermInYears");
 
                     b.HasKey("ID");
 
@@ -109,6 +94,8 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<decimal>("PurchasePrice");
 
+                    b.Property<int?>("RealEstatePropertyID");
+
                     b.Property<string>("RedFinId");
 
                     b.Property<decimal>("SquareFeet");
@@ -121,17 +108,51 @@ namespace GeekyMoney.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("RealEstatePropertyID");
+
                     b.ToTable("RealEstateProperty");
+                });
+
+            modelBuilder.Entity("GeekyMoney.Data.Model.RentalRate", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("RealEstatePropertyID");
+
+                    b.Property<decimal>("RentalAmount");
+
+                    b.Property<int>("ScheduleTypeID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("RealEstatePropertyID");
+
+                    b.ToTable("RentalRate");
                 });
 
             modelBuilder.Entity("GeekyMoney.Data.Model.Fee", b =>
                 {
-                    b.HasOne("GeekyMoney.Data.Model.Mortgage")
-                        .WithMany("LoanFees")
-                        .HasForeignKey("MortgageID");
-
                     b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
                         .WithMany("PropertyFees")
+                        .HasForeignKey("RealEstatePropertyID");
+                });
+
+            modelBuilder.Entity("GeekyMoney.Data.Model.RealEstateProperty", b =>
+                {
+                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
+                        .WithMany("Units")
+                        .HasForeignKey("RealEstatePropertyID");
+                });
+
+            modelBuilder.Entity("GeekyMoney.Data.Model.RentalRate", b =>
+                {
+                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty")
+                        .WithMany("RentSchedules")
                         .HasForeignKey("RealEstatePropertyID");
                 });
 #pragma warning restore 612, 618

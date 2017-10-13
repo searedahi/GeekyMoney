@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GeekyMoney.Model
 {
-    public class FixedRateMortgage : IMortgage
+    public class Mortgage : IMortgage
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -22,14 +22,15 @@ namespace GeekyMoney.Model
         public IEnumerable<IFee> LoanFees { get; set; }
         public IEnumerable<IPayment> AmortizationSchedule { get; private set; }
 
-        public decimal CashToClose
-        {
-            get
-            {
-                decimal cashNeeded = LoanFees.Sum(l => l.Amount);
-                return cashNeeded;
-            }
-        }
+        public decimal CashToClose { get; private set; }
+        //public decimal CashToClose
+        //{
+        //    get
+        //    {
+        //        decimal cashNeeded = LoanFees.Sum(l => l.Amount);
+        //        return cashNeeded;
+        //    }
+        //}
 
 
     }

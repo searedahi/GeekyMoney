@@ -1,0 +1,39 @@
+﻿<div class="row margin-top-05">
+    <h1>Mortgage Details</h1>
+</div>
+<div class="margin-top-05">
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Name : </strong></div>
+        <div class="col-xs-6"><label>{{mortgage.Name}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Description : </strong></div>
+        <div class="col-xs-6"><label>{{mortgage.description}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Loan Amount : </strong></div>
+        <div class="col-xs-6"><label>{{mortgage.loanAmount}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Interest Rate : </strong></div>
+        <div class="col-xs-6"><label>{{mortgage.interestRate}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Loan Term (years) : </strong></div>
+        <div class="col-xs-6"><label>{{mortgage.termInYears}}</label> </div>
+    </div>
+
+
+    <h3>Are you sure you want to delete this mortgage?</h3>
+
+    <div class="row margin-top-05">
+        <div class="col-xs-12">
+            <button class="btn btn-danger" (click)="onDelete(mortgage.id)">
+                <span class="glyphicon glyphicon-saved"></span> Delete
+            </button>
+            <button class="btn btn-primary" (click)="list()">
+                <span class="glyphicon glyphicon-list"></span> List
+            </button>
+        </div>
+    </div>
+</div>  

@@ -8,12 +8,14 @@
     <thead>
         <tr>
             <td colspan="7">
-                <button class="btn btn-success" [routerLink]="['/realestateproperty/0']">
-                    <span class="glyphicon glyphicon-pencil paddingRight"></span> Add
+                <button class="btn btn-success" [routerLink]="['/realestateproperty/edit/0']">
+                    <span class="glyphicon glyphicon-plus-sign paddingRight"></span> Add
                 </button>
             </td>
         </tr>
         <tr>
+            <th>Name</th>
+            <th>Addess</th>
             <th>Listed</th>
             <th>Purchase Price</th>
             <th>Market Value</th>
@@ -23,12 +25,14 @@
     </thead>
     <tbody>
         <tr *ngFor="let realProp of realEstateProperties">
+            <td>{{ realProp.name }}</td>
+            <td>{{ realProp.address }}</td>
             <td>{{ realProp.listed }}</td>
             <td>{{ realProp.purchasePrice }}</td>
             <td>{{ realProp.marketValue }}</td>
             <td>{{ realProp.squareFeet }}</td>
             <td>
-                <button class="btn btn-warning" [routerLink]="['/realestateproperty/' + realProp.id]">
+                <button class="btn btn-warning" [routerLink]="['/realestateproperty/edit/' + realProp.id]">
                     <span class="glyphicon glyphicon-pencil paddingRight"></span> Edit
                 </button>
                 <button class="btn btn-danger" [routerLink]="['/realestateproperty/delete/' + realProp.id]" >

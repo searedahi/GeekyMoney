@@ -1,4 +1,6 @@
-﻿export class RealEstateProperty {
+﻿import { Fee } from "./fee.model"
+
+export class RealEstateProperty {
     id: number;
     name: string;
     description: string;
@@ -20,4 +22,7 @@
     zillowId: string;
     redFinId: string;
     truliaId: string;
+
+    propertyFees: Fee[];
+    
 }

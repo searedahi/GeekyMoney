@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { RealEstateProperty } from '../realestateproperty.model';
+import { RealEstateProperty } from '../../_model/realestateproperty.model';
 import { RealEstatePropertyService } from '../realestateproperty.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { RealEstatePropertyService } from '../realestateproperty.service';
     providers: [RealEstatePropertyService],
     styleUrls: ['../realestateproperty.component.css']
 })
-export class RealEstatePropertyComponent {
+export class RealEstatePropertyEditComponent {
 
     public realEstateProperty: RealEstateProperty = new RealEstateProperty();
     private id: string;
@@ -23,6 +23,7 @@ export class RealEstatePropertyComponent {
         if (this != undefined && this.id != undefined && this.id != "0") {
             this.realEstatePropertyService.getDetail(this.id).subscribe(data => {
                 this.realEstateProperty = data.json();
+                var extraStop = "";
             },
                 error => console.log(error)
             );

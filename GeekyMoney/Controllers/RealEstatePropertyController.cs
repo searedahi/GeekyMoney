@@ -29,37 +29,41 @@ namespace GeekyMoney.Angular.Controllers
         }
 
         // GET: api/RealEstateProperty/5
-        [HttpGet("{id}", Name = "Get")]
-        public IRealEstateProperty Get(string id)
+        [HttpGet("{id}")]
+        public IRealEstateProperty Get(int id)
         {
             return _service.Get(id);
         }
 
         // POST: api/RealEstateProperty
         [HttpPost]
-        public IRealEstateProperty Post([FromBody]RealEstateProperty value)
+        public IActionResult Post([FromBody]RealEstateProperty value)
         {
-            var result = _service.Save(value);
-            return result;
+            var result = _service.Create(value);
+            return Ok();
         }
 
         // PUT: api/RealEstateProperty/5
         [HttpPut("{id}")]
-        public IRealEstateProperty Put(int id, [FromBody]RealEstateProperty value)
+        public IActionResult Put(int id, [FromBody]RealEstateProperty value)
         {
             var result = _service.Update(value);
-            return result;
+            return Ok(); ;
         }
 
         // DELETE: api/RealEstateProperty/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var result = false;
-
-            result = _service.Delete(id);
-
-            return Ok();
+            var result = _service.Delete(id);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
 
         }
     }

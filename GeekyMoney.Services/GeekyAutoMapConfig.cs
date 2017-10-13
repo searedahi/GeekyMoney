@@ -8,20 +8,21 @@ namespace GeekyMoney.Services
     {
         public GeekyAutoMapConfig()
         {
-            CreateMap<Data.Model.RealEstateProperty, Model.RealEstateProperty>()
+            CreateMap<Data.Model.Fee, Fee>()
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-            CreateMap<Data.Model.Fee, Model.Fee>()
+            CreateMap<Data.Model.RentalRate, RentalRate>()
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-            CreateMap<Data.Model.RentalRate, Model.RentalRate>()
+            CreateMap<Data.Model.RealEstateProperty, RealEstateProperty>()
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
-
-
-
+            
+            CreateMap<Data.Model.Mortgage, Mortgage>()
+                .ReverseMap()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }
 }

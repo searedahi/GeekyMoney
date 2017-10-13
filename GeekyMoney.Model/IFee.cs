@@ -4,6 +4,6 @@
     {
         decimal Amount { get; set; }
         bool IsDeductible { get; set; }
-        ScheduleType Schedule { get; set; }
+        //ScheduleType Schedule { get; set; }
     }
 }

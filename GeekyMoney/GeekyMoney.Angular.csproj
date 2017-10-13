@@ -42,9 +42,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\fee\fee.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\mortgage\delete\mortgagedelete.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\mortgage\edit\mortgageedit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\mortgage\mortgage.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\mortgage\mortgage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\delete\realestatepropertydelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\edit\realestatepropertyedit.component.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\fee.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\realestateproperty.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
   </ItemGroup>
 

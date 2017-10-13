@@ -25,7 +25,7 @@ namespace GeekyMoney.Data.Model
         public string TruliaId { get; set; }
 
         public virtual IEnumerable<Fee> PropertyFees { get; set; }
-        public virtual IEnumerable<RealEstateProperty> Units { get; set; }
-        public virtual IEnumerable<RentalRate> RentSchedules { get; set; }
+        //public virtual IEnumerable<RealEstateProperty> Units { get; set; }
+        //public virtual IEnumerable<RentalRate> RentSchedules { get; set; }
     }
 }
