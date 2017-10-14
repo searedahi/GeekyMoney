@@ -42,6 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\fee\delete\feedelete.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\fee\edit\feeedit.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fee\fee.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\delete\mortgagedelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\edit\mortgageedit.component.ts" />

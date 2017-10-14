@@ -1,0 +1,42 @@
+﻿<div class="row margin-top-05">
+    <h1>Property Details</h1>
+</div>
+<div class="margin-top-05">
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Listing Date : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.listed}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Asking Price : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.askingPrice}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Purchase Price : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.purchasePrice}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Market Value : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.marketValue}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Square Feet : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.squareFeet}}</label> </div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Address : </strong></div>
+        <div class="col-xs-6"><label>{{realEstateProperty.address}}</label> </div>
+    </div>
+
+    <h3>Are you sure you want to delete this property?</h3>
+
+    <div class="row margin-top-05">
+        <div class="col-xs-12">
+            <button class="btn btn-danger" (click)="onDelete(realEstateProperty.id)">
+                <span class="glyphicon glyphicon-saved"></span> Delete
+            </button>
+            <button class="btn btn-primary" (click)="list()">
+                <span class="glyphicon glyphicon-list"></span> List
+            </button>
+        </div>
+    </div>
+</div>  

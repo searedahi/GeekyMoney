@@ -17,6 +17,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Amount</th>
+            <th>Deductible</th>
             <th></th>
         </tr>
     </thead>
@@ -25,11 +26,12 @@
             <td>{{ fe.name }}</td>
             <td>{{ fe.description }}</td>
             <td>{{ fe.amount }}</td>
+            <td>{{ fe.isDeductible }}</td>
             <td>
-                <button class="btn btn-warning" [routerLink]="['/fee/edit/' + fee.id]">
+                <button class="btn btn-warning" [routerLink]="['/fee/edit/' + fe.id]">
                     <span class="glyphicon glyphicon-pencil paddingRight"></span> Edit
                 </button>
-                <button class="btn btn-danger" [routerLink]="['/fee/delete/' + fee.id]" >
+                <button class="btn btn-danger" [routerLink]="['/fee/delete/' + fe.id]">
                     <span class="glyphicon glyphicon-remove"></span> Delete
                 </button>
             </td>

@@ -23,7 +23,6 @@ export class RealEstatePropertyEditComponent {
         if (this != undefined && this.id != undefined && this.id != "0") {
             this.realEstatePropertyService.getDetail(this.id).subscribe(data => {
                 this.realEstateProperty = data.json();
-                var extraStop = "";
             },
                 error => console.log(error)
             );

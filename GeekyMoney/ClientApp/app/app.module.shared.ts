@@ -17,6 +17,8 @@ import { MortgageEditComponent } from './components/mortgage/edit/mortgageedit.c
 import { MortgageDeleteComponent } from './components/mortgage/delete/mortgagedelete.component'
 
 import { FeesComponent } from './components/fee/fees.component';
+import { FeeEditComponent } from './components/fee/edit/feeedit.component';
+import { FeeDeleteComponent } from './components/fee/delete/feedelete.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { FeesComponent } from './components/fee/fees.component';
         MortgagesComponent,
         MortgageEditComponent,
         MortgageDeleteComponent,
-        FeesComponent
+        FeesComponent,
+        FeeEditComponent,
+        FeeDeleteComponent
     ],
     imports: [
         CommonModule,
@@ -48,6 +52,8 @@ import { FeesComponent } from './components/fee/fees.component';
             { path: 'mortgage/edit/:id', component: MortgageEditComponent },
             { path: 'mortgage/delete/:id', component: MortgageDeleteComponent },
             { path: 'fees', component: FeesComponent },
+            { path: 'fee/edit/:id', component: FeeEditComponent },
+            { path: 'fee/delete/:id', component: FeeDeleteComponent },
 
             { path: '**', redirectTo: 'home' }
         ])
