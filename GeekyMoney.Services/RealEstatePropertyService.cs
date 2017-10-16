@@ -57,7 +57,7 @@ namespace GeekyMoney.Services
             var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(updatedRealEstateProperty as RealEstateProperty);
 
             _context.RealEstateProperty.Attach(dbRealEstateProperty);
-            _context.Entry(dbRealEstateProperty).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Entry(dbRealEstateProperty).State = EntityState.Modified;
             var recordCount = _context.SaveChanges();
 
             return _mapper.Map<Data.Model.RealEstateProperty, RealEstateProperty>(dbRealEstateProperty);

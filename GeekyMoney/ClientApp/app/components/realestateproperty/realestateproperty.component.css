@@ -5,3 +5,12 @@
 .margin-top-05 {
     margin-top: 0.5em;
 }
+
+.textWithGlyph {
+    cursor: pointer;
+}
+
+    .textWithGlyph :hover {
+        opacity: 0.1;
+        background-color: orange !important;
+    }

@@ -24,5 +24,4 @@ export class RealEstateProperty {
     truliaId: string;
 
     propertyFees: Fee[];
-    
 }

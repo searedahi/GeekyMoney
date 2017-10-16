@@ -12,11 +12,11 @@ namespace GeekyMoney.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public IRentalRate RentalRate { get; set; }
-        public RealEstateScenarioKPI ScenarioKPI { get; set; }
+        public IRealEstateScenarioKPI ScenarioKPI { get; set; }
 
-        private decimal ExpectedIncome; //Expected income 
+        private decimal ExpectedIncome; //Expected income
 
-        public RealEstateScenario(bool isFakeConstructorFOrSpeed)
+        public RealEstateScenario(bool isFakeConstructorForSpeed)
         {
             Mortgage = new Mortgage();
             RealEstateProperty = new RealEstateProperty();

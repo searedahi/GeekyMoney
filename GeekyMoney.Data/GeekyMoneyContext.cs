@@ -9,7 +9,7 @@ namespace GeekyMoney.Data
         public DbSet<RealEstateProperty> RealEstateProperty { get; set; }
         public DbSet<Mortgage> Mortgage { get; set; }
         public DbSet<Fee> Fee { get; set; }
-
+        public DbSet<Scenario> Scenario { get; set; }
 
         public GeekyMoneyContext(DbContextOptions<GeekyMoneyContext> options)
             : base(options)

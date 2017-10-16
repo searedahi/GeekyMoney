@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GeekyMoney.Model
 {
-    public class RealEstateScenarioKPI
+    public class RealEstateScenarioKPI : IRealEstateScenarioKPI
     {
         private IRealEstateScenario _scenario;
 
@@ -184,7 +184,7 @@ namespace GeekyMoney.Model
         {
             get
             {
-                return AnnualRentalIncome/ (_scenario.Mortgage.DownPayment + _scenario.Mortgage.CashToClose);
+                return AnnualRentalIncome / (_scenario.Mortgage.DownPayment + _scenario.Mortgage.CashToClose);
             }
         }
         public string CashOnCashReturnFormatted

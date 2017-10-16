@@ -5,6 +5,6 @@
         IMortgage Mortgage { get; set; }
         IRealEstateProperty RealEstateProperty { get; set; }  
         IRentalRate RentalRate { get; set; }
-        RealEstateScenarioKPI ScenarioKPI { get; set; } //Make this an interface ASAP
+        IRealEstateScenarioKPI ScenarioKPI { get; set; }
     }
 }

@@ -20,7 +20,6 @@ import { FeesComponent } from './components/fee/fees.component';
 import { FeeEditComponent } from './components/fee/edit/feeedit.component';
 import { FeeDeleteComponent } from './components/fee/delete/feedelete.component';
 
-
 @NgModule({
     declarations: [
         AppComponent,
