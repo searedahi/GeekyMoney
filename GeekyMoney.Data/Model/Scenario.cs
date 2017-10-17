@@ -6,8 +6,8 @@ namespace GeekyMoney.Data.Model
 {
     public class Scenario : BaseGeekyDataModel
     {
-        RealEstateProperty RealEstateProperty { get; set; }
-        Mortgage Mortgage { get; set; }
-        RentalRate RentalRate { get; set; }
+        public RealEstateProperty RealEstateProperty { get; set; }
+        public Mortgage Mortgage { get; set; }
+        public RentalRate RentalRate { get; set; }
     }
 }

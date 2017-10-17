@@ -42,9 +42,9 @@ namespace GeekyMoney.Services
             return realProperties;
         }
 
-        public IRealEstateProperty Create(IRealEstateProperty newRealEstateProperty)
+        public IRealEstateProperty Create(IRealEstateProperty domainModel)
         {
-            var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(newRealEstateProperty as RealEstateProperty);
+            var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(domainModel as RealEstateProperty);
 
             _context.RealEstateProperty.Add(dbRealEstateProperty);
             var recordCount = _context.SaveChanges();
@@ -52,9 +52,9 @@ namespace GeekyMoney.Services
             return _mapper.Map<Data.Model.RealEstateProperty, RealEstateProperty>(dbRealEstateProperty);
         }
 
-        public IRealEstateProperty Update(IRealEstateProperty updatedRealEstateProperty)
+        public IRealEstateProperty Update(IRealEstateProperty domainModel)
         {
-            var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(updatedRealEstateProperty as RealEstateProperty);
+            var dbRealEstateProperty = _mapper.Map<RealEstateProperty, Data.Model.RealEstateProperty>(domainModel as RealEstateProperty);
 
             _context.RealEstateProperty.Attach(dbRealEstateProperty);
             _context.Entry(dbRealEstateProperty).State = EntityState.Modified;

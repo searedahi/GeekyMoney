@@ -23,6 +23,11 @@ namespace GeekyMoney.Services
             CreateMap<Data.Model.Mortgage, Mortgage>()
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            CreateMap<Data.Model.Scenario, RealEstateScenario>()
+                .ReverseMap()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
         }
     }
 }
