@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using GeekyMoney.Model;
+﻿using GeekyMoney.Model;
 namespace GeekyMoney.Services
 {
-    public interface IFeeService : IGeekyDataService<IFee>
+    public interface IFeeService : IGeekyService<IFee>
     {
     }
 }

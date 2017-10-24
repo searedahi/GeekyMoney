@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GeekyMoney.Data.Model
+﻿namespace GeekyMoney.Data.Model
 {
     public class Scenario : BaseGeekyDataModel
     {

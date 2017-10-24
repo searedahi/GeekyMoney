@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GeekyMoney.Services
+namespace GeekyMoney.Data.Services
 {
     public interface IGeekyDataService<T>
     {

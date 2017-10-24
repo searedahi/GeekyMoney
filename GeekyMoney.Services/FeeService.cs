@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using AutoMapper;
 using GeekyMoney.Data;
 using GeekyMoney.Model;
-using System.Linq;
+using GeekyMoney.Data.Services;
 
 namespace GeekyMoney.Services
 {
@@ -12,60 +10,38 @@ namespace GeekyMoney.Services
     {
         private GeekyMoneyContext _context;
         private IMapper _mapper;
+        private FeeDataService _dataService;
 
         public FeeService(GeekyMoneyContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
+            _dataService = new FeeDataService(_context, _mapper);
         }
 
         public IFee Create(IFee domainModel)
         {
-            var dbFee = _mapper.Map<Fee, Data.Model.Fee>(domainModel as Fee);
-
-            _context.Fee.Add(dbFee);
-            var recordCount = _context.SaveChanges();
-
-            return _mapper.Map<Data.Model.Fee, Fee>(dbFee);
+            return _dataService.Create(domainModel);
         }
 
         public bool Delete(int id)
         {
-            var dbRecordToRemove = _context.Fee.FirstOrDefault(p => p.ID.Equals(id));
-            _context.Remove(dbRecordToRemove);
-            var recordCount = _context.SaveChanges();
-            return recordCount > 0;
+            return _dataService.Delete(id);
         }
 
         public IFee Get(int id)
         {
-            var dbFee = _context.Fee.FirstOrDefault(p => p.ID.Equals(id));
-            var domModel = _mapper.Map<Data.Model.Fee, Fee>(dbFee);
-            return domModel;
+            return _dataService.Get(id);
         }
 
         public IEnumerable<IFee> GetAll()
         {
-            var fees = new List<IFee>();
-
-            foreach (var fee in _context.Fee.ToList())
-            {
-                var domainFee = _mapper.Map<Data.Model.Fee, Fee>(fee);
-                fees.Add(domainFee);
-            }
-
-            return fees;
+            return _dataService.GetAll();
         }
 
         public IFee Update(IFee domainModel)
         {
-            var dbFee = _mapper.Map<Fee, Data.Model.Fee>(domainModel as Fee);
-
-            _context.Fee.Attach(dbFee);
-            _context.Entry(dbFee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            var recordCount = _context.SaveChanges();
-
-            return _mapper.Map<Data.Model.Fee, Fee>(dbFee);
+            return _dataService.Update(domainModel);
         }
     }
 }

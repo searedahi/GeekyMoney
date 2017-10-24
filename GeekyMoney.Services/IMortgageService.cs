@@ -2,7 +2,7 @@
 
 namespace GeekyMoney.Services
 {
-    public interface IMortgageService : IGeekyDataService<IMortgage>
+    public interface IMortgageService : IGeekyService<IMortgage>
     {
 
     }

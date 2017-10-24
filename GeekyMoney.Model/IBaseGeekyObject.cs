@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GeekyMoney.Model
+﻿namespace GeekyMoney.Model
 {
     public interface IBaseGeekyObject
     {
