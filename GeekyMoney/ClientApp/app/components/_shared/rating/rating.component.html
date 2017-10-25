@@ -1,0 +1,5 @@
+﻿<div class='crop'>
+    <div [title]='rating' *ngFor='let index of range'>
+        <i class='glyphicon' (click)='onClick(index)' [ngClass]="index <= rating ? 'glyphicon-star' : 'glyphicon-star-empty'"></i>
+    </div>
+</div>

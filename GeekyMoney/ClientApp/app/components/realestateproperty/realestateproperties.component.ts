@@ -2,13 +2,14 @@
 import { Http } from '@angular/http';
 import { RealEstateProperty } from '../_model/realestateproperty.model';
 import { RealEstatePropertyService } from './realestateproperty.service'
-
+import { RatingComponent } from '../_shared/rating/rating.component';
 
 @Component({
     selector: 'realestateproperties',
     templateUrl: './realestateproperties.component.html',
     providers: [RealEstatePropertyService],
     styleUrls: ['./realestateproperty.component.css']
+    
 })
 
 export class RealEstatePropertiesComponent {

@@ -23,6 +23,7 @@ namespace GeekyMoney.Data.Model
         public string ZillowId { get; set; }
         public string RedFinId { get; set; }
         public string TruliaId { get; set; }
+        public decimal Rating { get; set; }
 
         public virtual IEnumerable<Fee> PropertyFees { get; set; }
         //public virtual IEnumerable<RealEstateProperty> Units { get; set; }

@@ -20,6 +20,8 @@ import { FeesComponent } from './components/fee/fees.component';
 import { FeeEditComponent } from './components/fee/edit/feeedit.component';
 import { FeeDeleteComponent } from './components/fee/delete/feedelete.component';
 
+import { RatingComponent } from './components/_shared/rating/rating.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -34,7 +36,8 @@ import { FeeDeleteComponent } from './components/fee/delete/feedelete.component'
         MortgageDeleteComponent,
         FeesComponent,
         FeeEditComponent,
-        FeeDeleteComponent
+        FeeDeleteComponent,
+        RatingComponent
     ],
     imports: [
         CommonModule,

@@ -34,6 +34,7 @@ namespace GeekyMoney.Model
         string ZillowId { get; set; }
         string RedFinId { get; set; }
         string TruliaId { get; set; }
+        decimal Rating { get; set; }
 
         IEnumerable<Fee> PropertyFees { get; set; }
         //IEnumerable<IRealEstateProperty> Units { get; set; }

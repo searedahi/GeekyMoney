@@ -22,6 +22,7 @@ export class RealEstateProperty {
     zillowId: string;
     redFinId: string;
     truliaId: string;
+    rating: number;
 
     propertyFees: Fee[];
 }

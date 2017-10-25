@@ -27,6 +27,7 @@ namespace GeekyMoney.Model
         public string ZillowId { get; set; }
         public string RedFinId { get; set; }
         public string TruliaId { get; set; }
+        public decimal Rating { get; set; }
 
         //public IEnumerable<RealEstateProperty> Units { get; set; }
         //public IEnumerable<IRentalRate> RentSchedules { get; set; }

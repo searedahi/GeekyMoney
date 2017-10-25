@@ -60,6 +60,10 @@ export class RealEstatePropertyEditComponent {
         this.redirect.navigateByUrl('/realestateproperties');
     }
 
+    onRating(obj: any): void {
+        this.realEstateProperty.rating = obj.rating;
+    }
+
 }
 
 

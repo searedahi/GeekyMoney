@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\fee\picker\" />
     <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\" />
@@ -51,6 +52,7 @@
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\mortgage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\delete\realestatepropertydelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\edit\realestatepropertyedit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_shared\rating\rating.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\fee.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\realestateproperty.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
