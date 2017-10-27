@@ -5,4 +5,5 @@
     amount: number;
     isDeductible: boolean;
     scheduleTypeID: number;
+    parentObjectId: number;
 }
