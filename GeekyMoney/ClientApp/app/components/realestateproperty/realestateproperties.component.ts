@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { RealEstateProperty } from '../_model/realestateproperty.model';
 import { RealEstatePropertyService } from './realestateproperty.service'
 import { RatingComponent } from '../_shared/rating/rating.component';
+import { FeePickerComponent } from '../fee/picker/feepicker.component';
 
 @Component({
     selector: 'realestateproperties',

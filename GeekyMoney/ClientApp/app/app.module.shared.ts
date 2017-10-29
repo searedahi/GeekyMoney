@@ -19,6 +19,7 @@ import { MortgageDeleteComponent } from './components/mortgage/delete/mortgagede
 import { FeesComponent } from './components/fee/fees.component';
 import { FeeEditComponent } from './components/fee/edit/feeedit.component';
 import { FeeDeleteComponent } from './components/fee/delete/feedelete.component';
+import { FeePickerComponent } from './components/fee/picker/feepicker.component';
 
 import { RatingComponent } from './components/_shared/rating/rating.component';
 
@@ -37,6 +38,7 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
         FeesComponent,
         FeeEditComponent,
         FeeDeleteComponent,
+        FeePickerComponent,
         RatingComponent
     ],
     imports: [
@@ -54,6 +56,7 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
             { path: 'mortgage/edit/:id', component: MortgageEditComponent },
             { path: 'mortgage/delete/:id', component: MortgageDeleteComponent },
             { path: 'fees', component: FeesComponent },
+            { path: 'fee/templates', component: FeesComponent },
             { path: 'fee/edit/:id', component: FeeEditComponent },
             { path: 'fee/delete/:id', component: FeeDeleteComponent },
 

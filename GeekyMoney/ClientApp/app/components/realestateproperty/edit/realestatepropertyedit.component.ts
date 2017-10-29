@@ -3,11 +3,13 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { RealEstateProperty } from '../../_model/realestateproperty.model';
 import { RealEstatePropertyService } from '../realestateproperty.service';
+import { FeePickerComponent } from '../../fee/picker/feepicker.component';
+import { FeeService } from '../../fee/fee.service';
 
 @Component({
     selector: 'realestateproperty/edit',
     templateUrl: './realestatepropertyedit.component.html',
-    providers: [RealEstatePropertyService],
+    providers: [RealEstatePropertyService, FeeService],
     styleUrls: ['../realestateproperty.component.css']
 })
 export class RealEstatePropertyEditComponent {

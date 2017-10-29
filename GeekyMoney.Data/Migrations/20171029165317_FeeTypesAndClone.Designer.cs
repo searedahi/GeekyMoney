@@ -11,9 +11,10 @@ using System;
 namespace GeekyMoney.Data.Migrations
 {
     [DbContext(typeof(GeekyMoneyContext))]
-    partial class GeekyMoneyContextModelSnapshot : ModelSnapshot
+    [Migration("20171029165317_FeeTypesAndClone")]
+    partial class FeeTypesAndClone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

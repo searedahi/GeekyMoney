@@ -8,5 +8,12 @@
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public ScheduleType Schedule { get; set; }
+        public FeeType FeeType { get; set; }
+        public bool IsTemplate { get; set; }
+
+        public int? RealEstatePropertyID { get; set; }
+        public int? MortgageID { get; set; }
+
     }
 }

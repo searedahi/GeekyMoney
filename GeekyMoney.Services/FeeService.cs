@@ -39,6 +39,26 @@ namespace GeekyMoney.Services
             return _dataService.GetAll();
         }
 
+        public IEnumerable<IFee> GetAllByType(int feeTypeId)
+        {
+            return _dataService.GetAllByFeeType(feeTypeId, false);
+        }
+
+        public IEnumerable<IFee> GetTemplates()
+        {
+            return _dataService.GetTemplates();
+        }
+
+        public IEnumerable<IFee> GetTemplatesByType(int feeTypeId)
+        {
+            return _dataService.GetAllByFeeType(feeTypeId, true);
+        }
+
+        public IFee CloneTemplate(int templateId, int parentObjectId)
+        {
+            return _dataService.CloneTemplate(templateId, parentObjectId);
+        }
+
         public IFee Update(IFee domainModel)
         {
             return _dataService.Update(domainModel);

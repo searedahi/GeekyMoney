@@ -1,4 +1,4 @@
-﻿import { Component, Inject } from '@angular/core';
+﻿import { Component, Inject, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { Fee } from '../_model/fee.model';
 import { FeeService } from './fee.service'
@@ -13,6 +13,7 @@ import { FeeService } from './fee.service'
 
 export class FeesComponent {
     public fees: Fee[]
+    @Input() isTemplate: boolean;
 
     //constructor(http: Http, @Inject('BASE_URL') baseUrl: string) {
     //    http.get(baseUrl + 'api/RealEstateProperty').subscribe(result => {
@@ -23,12 +24,27 @@ export class FeesComponent {
     constructor(private feeService: FeeService) {
         this.getListData();
     }
-    
+
     getListData() {
-        this.feeService.getData().subscribe(data => {
-            this.fees = data.json() as Fee[];
-        },
-            error => console.log(error)
-        );
+
+        if (this.isTemplate == true) {
+            this.feeService.getData().subscribe(data => {
+                this.fees = data.json() as Fee[];
+            },
+                error => console.log(error)
+            );
+        } else {
+            this.feeService.getTemplates().subscribe(data => {
+                this.fees = data.json() as Fee[];
+            },
+                error => console.log(error)
+            );
+        }
     }
+
+    onClick(value: number): void {
+        this.isTemplate = !this.isTemplate;
+        this.getListData();
+    }
+
 }

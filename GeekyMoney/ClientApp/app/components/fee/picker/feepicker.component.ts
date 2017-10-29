@@ -1,24 +1,27 @@
-﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
+﻿import { Component, Inject, Input } from '@angular/core';
 import { Fee } from '../../_model/fee.model';
+import { FeeService } from '../fee.service'
 
 @Component({
-    selector: 'feepicker',
+    selector: 'fee-picker',
     templateUrl: './feepicker.component.html',
     styleUrls: ['./feepicker.component.css']
 })
 
 export class FeePickerComponent {
 
-    selectedFee: Fee;
-    allFees: Fee[];
+    public selectedFee: Fee;
+    public allFees: Fee[];
     
-    @Output() feeClicked = new EventEmitter<any>();
+    constructor(private feeService: FeeService) {
+        this.getListData();
+    }
 
-    onClick(value: number): void {
-        this.selectedFee.id = value;
-        this.feeClicked.emit({
-            feeId: this.selectedFee.id,
-            parentObjectId: this.selectedFee.parentObjectId
-        });
+    getListData() {
+        this.feeService.getData().subscribe(data => {
+            this.allFees = data.json() as Fee[];
+        },
+            error => console.log(error)
+        );
     }
 }

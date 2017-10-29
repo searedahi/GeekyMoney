@@ -20,6 +20,18 @@ export class FeeService {
         return this.http.get('/api/fee');
     }
 
+    getDataByType(id: string) {
+        return this.http.get('/api/fee/type/'+id);
+    }
+
+    getTemplates() {
+        return this.http.get('/api/fee/templates');
+    }
+
+    getTemplatesByType(id: string) {
+        return this.http.get('/api/fee/templates/type/' + id);
+    }
+
     getDetail(id: string) {        
         return this.http.get('/api/fee/' + id);
     }

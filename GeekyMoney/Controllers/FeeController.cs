@@ -18,10 +18,31 @@ namespace GeekyMoney.Angular.Controllers
         }
 
         // GET: api/Fee
-        [HttpGet]
+        [HttpGet()]
         public IEnumerable<IFee> Get()
         {
             return _service.GetAll();
+        }
+
+        // GET: api/Fee/ByType/1
+        [HttpGet("[action]/{feeTypeId}")]
+        public IEnumerable<IFee> ByType(int feeTypeId)
+        {
+            return _service.GetAllByType(feeTypeId);
+        }
+
+        // GET: api/Fee/Templates
+        [HttpGet("[action]")]
+        public IEnumerable<IFee> Templates()
+        {
+            return _service.GetTemplates();
+        }
+
+        // GET: api/Fee/Templates/ByType/1
+        [HttpGet("/Templates/ByType/{feeTypeId}")]
+        public IEnumerable<IFee> TemplatesByType(int feeTypeId)
+        {
+            return _service.GetTemplates();
         }
 
         // GET: api/Fee/5
@@ -61,5 +82,12 @@ namespace GeekyMoney.Angular.Controllers
                 return BadRequest();
             }
         }
+
+
+
+
+
+
+
     }
 }
