@@ -18,6 +18,8 @@
             <th>Name</th>
             <th>Description</th>
             <th>Amount</th>
+            <th>Schedule Type</th>
+            <th>Template</th>
             <th>Deductible</th>
             <th></th>
         </tr>
@@ -26,7 +28,9 @@
         <tr *ngFor="let fe of fees">
             <td>{{ fe.name }}</td>
             <td>{{ fe.description }}</td>
-            <td>{{ fe.amount }}</td>
+            <td>{{ fe.amount }}</td>            
+            <td>{{ fe.scheduleTypeID }}</td>
+            <td>{{ fe.isTemplate }}</td>            
             <td>{{ fe.isDeductible }}</td>
             <td>
                 <button class="btn btn-warning" [routerLink]="['/fee/edit/' + fe.id]">

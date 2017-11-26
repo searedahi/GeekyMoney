@@ -1,0 +1,6 @@
+﻿<select (change)="feeTypePicked($event.target.value)">
+    <option value="0">-- Fee Types --</option>
+    <option *ngFor="let feeType of allFeeTypes" value={{feeType.id}}>
+        {{feeType.name}}
+    </option>
+</select>

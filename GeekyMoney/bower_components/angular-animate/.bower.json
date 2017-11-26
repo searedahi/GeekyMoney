@@ -1,0 +1,21 @@
+{
+  "name": "angular-animate",
+  "version": "1.6.7-build.5497+sha.f876ab7",
+  "license": "MIT",
+  "main": "./angular-animate.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.6.7-build.5497+sha.f876ab7"
+  },
+  "homepage": "https://github.com/angular/bower-angular-animate",
+  "_release": "1.6.7-build.5497+sha.f876ab7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.6.7-build.5497+sha.f876ab7",
+    "commit": "94a40bbd23f6aabadbf6504270822dcc57892d85"
+  },
+  "_source": "https://github.com/angular/bower-angular-animate.git",
+  "_target": "v1.6.7-build.5497+sha.f876ab7",
+  "_originalSource": "angular-animate",
+  "_direct": true
+}

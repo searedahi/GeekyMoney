@@ -1,4 +1,6 @@
-﻿namespace GeekyMoney.Data.Model
+﻿using GeekyMoney.Enums;
+
+namespace GeekyMoney.Data.Model
 {
     public class Fee : BaseGeekyDataModel
     {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { BootstrapSwitchModule } from 'angular2-bootstrap-switch';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -44,7 +45,7 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
     imports: [
         CommonModule,
         HttpModule,
-        FormsModule,
+        FormsModule,  
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
@@ -61,8 +62,10 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
             { path: 'fee/delete/:id', component: FeeDeleteComponent },
 
             { path: '**', redirectTo: 'home' }
-        ])
-    ]
+        ]),
+        BootstrapSwitchModule.forRoot()
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModuleShared {
 }

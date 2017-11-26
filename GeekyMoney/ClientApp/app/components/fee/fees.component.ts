@@ -28,13 +28,14 @@ export class FeesComponent {
     getListData() {
 
         if (this.isTemplate == true) {
-            this.feeService.getData().subscribe(data => {
+
+            this.feeService.getTemplates().subscribe(data => {
                 this.fees = data.json() as Fee[];
             },
                 error => console.log(error)
             );
         } else {
-            this.feeService.getTemplates().subscribe(data => {
+            this.feeService.getData().subscribe(data => {
                 this.fees = data.json() as Fee[];
             },
                 error => console.log(error)

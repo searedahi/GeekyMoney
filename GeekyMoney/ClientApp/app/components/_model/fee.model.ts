@@ -5,8 +5,11 @@
     amount: number;
     isDeductible: boolean;
     isTemplate: boolean;
-    scheduleTypeId: number;
-    feeTypeId: number;
-    realEstatePropertyId: number;
-    mortgageId: number;
+    scheduleTypeID: number;
+    feeTypeID: number;
+    realEstatePropertyID: number;
+    mortgageID: number;
+
+    monthlyTotal: number;
+    annualTotal: number;
 }

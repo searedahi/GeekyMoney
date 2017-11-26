@@ -1,4 +1,6 @@
-﻿namespace GeekyMoney.Model
+﻿using GeekyMoney.Enums;
+
+namespace GeekyMoney.Model
 {
     public interface IRentalRate
     {

@@ -1,23 +1,90 @@
-﻿<div class="row margin-top-05">
-    <h1>Add / Edit Fee</h1>
+﻿
+<div class="row margin-top-05 col-lg-12">
+    <h1>Fee Editor</h1>
 </div>
+
 <div class="margin-top-05">
-    <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Name : </strong></div>
-        <div class="col-xs-6"><input [(ngModel)]="fee.name" required /> </div>
+    <div class="row">
+        <div class="form-group col-md-4">
+            <label class="control-label"><strong> Name</strong></label>
+            <input class="form-control" [(ngModel)]="fee.name" required />
+        </div>
     </div>
-    <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Amount : </strong></div>
-        <div class="col-xs-6"><input [(ngModel)]="fee.amount" required /> </div>
+    <div class="row">
+        <div class="form-group col-md-8">
+            <label class="control-label"><strong> Description</strong></label>
+            <textarea class="form-control span6" rows="6" placeholder="What's up?" [(ngModel)]="fee.description" required></textarea>
+        </div>
     </div>
-    <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Description : </strong></div>
-        <div class="col-xs-6"><input [(ngModel)]="fee.description" /> </div>
+    <div class="row">
+        <div class="form-group col-md-4 col-xs-12">
+            <label class="control-label"><strong>Amount</strong></label>
+            <input class="form-control" [(ngModel)]="fee.amount" required />
+        </div>
+
+        <div class="form-group col-md-2 col-xs-12">
+            <label class="control-label"><strong>Fee Type</strong></label>
+            <div>
+                <switch [status]="fee.feeTypeID == 1" onText="$" onColor="sky-blue" offText="%" offColor="yellow" (statusChange)="onFeeTypeChange()"></switch>
+            </div>
+            <!--<input  [(ngModel)]="fee.feeTypeId" />-->
+        </div>
+        <div class="form-group col-md-2 col-xs-12">
+            <label class="control-label"><strong>Fee Schedule</strong></label>
+            <select class="form-control"  [(ngModel)]="fee.scheduleTypeID" >
+                <option *ngFor="let sch of allScheduleTypes" [ngValue]="sch.id" >
+                    {{sch.name}}
+                </option>
+            </select>
+            <!--<input  [(ngModel)]="fee.feeTypeId" />-->
+        </div>
     </div>
-    <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Is Deductible : </strong></div>
-        <div class="col-xs-6"><input type="checkbox" [(ngModel)]="fee.isDeductible"/></div>
+    <div class="row">
+        <div class="form-group col-md-4 col-xs-12">
+            <label class="control-label"><strong>Percent Of:</strong></label>
+            <select class="form-control">
+                <option value="0">Pick Your Base Figure</option>
+                <option *ngFor="let pctOf of percentOfOptions" value={{pctOf.id}}>
+                    {{pctOf.name}}
+                </option>
+            </select>
+        </div>
     </div>
+    <div class="row">
+        <div class="form-group col-md-4 col-xs-12">
+            <label class="control-label"><strong>Monthly Dollar Amount</strong></label>
+            <h4>{{fee.monthlyTotal|currency:'USD':true:'2.2-4'}}</h4>
+        </div>
+        <div class="form-group col-md-4 col-xs-12">
+            <label class="control-label"><strong>Annual Dollar Amount</strong></label>
+            <h4>{{fee.annualTotal|currency:'USD':true:'2.2-4'}}</h4>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="form-group col-md-4" [hidden]="fee.realEstatePropertyID > 0">
+            <label class="control-label"><strong>Template</strong></label>
+            <div>
+                <switch [status]="fee.isTemplate" onColor="green" onText="Yes" offText="No" (statusChange)="onTemplateFlagChange()" [disabled]="this.enableTemplateToggle == false"></switch>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="control-label"><strong>Deductible</strong></label>
+            <div>
+                <switch [status]="fee.isDeductible" onColor="green" onText="Yes" offText="No" (statusChange)="onDeductibleFlagChange()"></switch>
+            </div>
+        </div>
+    </div>
+    <div class="row" [hidden]="this.enableTemplateToggle == false">
+        <div class="form-group col-md-4">
+            <label class="control-label"><strong> Real Estate Prop Id : </strong></label>
+            <input class="form-control" [(ngModel)]="fee.realEstatePropertyID" [disabled]="fee.realEstatePropertyID != undefined && fee.realEstatePropertyID > 0" />
+        </div>
+
+    </div>
+
     <div class="row margin-top-05">
         <div class="col-xs-12">
             <button class="btn btn-primary" (click)="save()">

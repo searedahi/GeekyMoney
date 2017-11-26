@@ -1,4 +1,4 @@
-﻿namespace GeekyMoney.Model
+﻿namespace GeekyMoney.Enums
 {
     public enum ScheduleType
     {

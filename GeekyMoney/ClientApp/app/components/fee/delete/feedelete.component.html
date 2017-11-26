@@ -3,35 +3,39 @@
 </div>
 <div class="margin-top-05">
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Listing Date : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.listed}}</label> </div>
+        <div class="col-xs-2"><strong> Name : </strong></div>
+        <div class="col-xs-6"><label>{{fee.name}}</label> </div>
     </div>
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Asking Price : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.askingPrice}}</label> </div>
+        <div class="col-xs-2"><strong> Amount : </strong></div>
+        <div class="col-xs-6"><label>{{fee.amount}}</label> </div>
     </div>
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Purchase Price : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.purchasePrice}}</label> </div>
+        <div class="col-xs-2"><strong> Description : </strong></div>
+        <div class="col-xs-6"><label>{{fee.description}}</label> </div>
     </div>
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Market Value : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.marketValue}}</label> </div>
+        <div class="col-xs-2"><strong> Fee Type : </strong></div>
+        <div class="col-xs-6"><label>{{fee.feeTypeId}}</label> </div>
     </div>
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Square Feet : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.squareFeet}}</label> </div>
+        <div class="col-xs-2"><strong> Real Estate Prop ID : </strong></div>
+        <div class="col-xs-6"><label>{{fee.realEstatePropertyId}}</label> </div>
     </div>
     <div class="row margin-top-05">
-        <div class="col-xs-2"><strong> Address : </strong></div>
-        <div class="col-xs-6"><label>{{realEstateProperty.address}}</label> </div>
+        <div class="col-xs-2"><strong> Is Template : </strong></div>
+        <div class="col-xs-6"><input type="checkbox" [(ngModel)]="fee.isTemplate" disabled /></div>
+    </div>
+    <div class="row margin-top-05">
+        <div class="col-xs-2"><strong> Is Deductible : </strong></div>
+        <div class="col-xs-6"><input type="checkbox" [(ngModel)]="fee.isDeductible" disabled /></div>
     </div>
 
     <h3>Are you sure you want to delete this property?</h3>
 
     <div class="row margin-top-05">
         <div class="col-xs-12">
-            <button class="btn btn-danger" (click)="onDelete(realEstateProperty.id)">
+            <button class="btn btn-danger" (click)="onDelete(fee.id)">
                 <span class="glyphicon glyphicon-saved"></span> Delete
             </button>
             <button class="btn btn-primary" (click)="list()">

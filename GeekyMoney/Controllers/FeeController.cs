@@ -54,10 +54,10 @@ namespace GeekyMoney.Angular.Controllers
 
         // POST: api/Fee
         [HttpPost]
-        public IActionResult Post([FromBody]Fee value)
+        public IFee Post([FromBody]Fee value)
         {
             var result = _service.Create(value);
-            return Ok();
+            return result;
         }
 
         // PUT: api/Fee/5
@@ -82,12 +82,5 @@ namespace GeekyMoney.Angular.Controllers
                 return BadRequest();
             }
         }
-
-
-
-
-
-
-
     }
 }

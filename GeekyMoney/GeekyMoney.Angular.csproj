@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="6.1.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+    <PackageReference Include="AutoMapper" Version="6.2.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +26,7 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
     <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
+    <None Remove="ClientApp\app\components\_shared\feeTypePicker\feeTypePicker.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\fee\delete\feedelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fee\edit\feeedit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\fee\feeType.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\fee\fee.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\delete\mortgagedelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\edit\mortgageedit.component.ts" />
@@ -51,6 +53,9 @@
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\mortgage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\delete\realestatepropertydelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\edit\realestatepropertyedit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\scheduleType.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\feeType.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_shared\feeTypePicker\feeTypePicker.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_shared\rating\rating.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\fee.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\realestateproperty.model.ts" />

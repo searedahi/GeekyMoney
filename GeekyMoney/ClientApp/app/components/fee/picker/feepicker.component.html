@@ -1,5 +1,5 @@
-﻿<select>
-    <option value="0">--Select A Fee--</option>
+﻿<select (change)="feePicked($event.target.value)">
+    <option value="0">-- Fee Templates --</option>
     <option *ngFor="let fe of allFees" value={{fe.id}}>
         {{fe.name}}
     </option>
