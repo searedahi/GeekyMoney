@@ -62,10 +62,10 @@ namespace GeekyMoney.Angular.Controllers
 
         // PUT: api/Fee/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]Fee value)
+        public IFee Put(int id, [FromBody]Fee value)
         {
             var result = _service.Update(value);
-            return Ok();
+            return result;
         }
 
         // DELETE: api/Fee/5

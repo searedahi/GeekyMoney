@@ -26,6 +26,9 @@
   <ItemGroup>
     <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.model.ts" />
     <None Remove="ClientApp\app\components\realestateproperty\realestateproperty.service.ts" />
+    <None Remove="ClientApp\app\components\_model\genericDropDownType.model.ts" />
+    <None Remove="ClientApp\app\components\_model\mortgage.model.ts" />
+    <None Remove="ClientApp\app\components\_model\percentOfOption.model.ts" />
     <None Remove="ClientApp\app\components\_shared\feeTypePicker\feeTypePicker.component.ts" />
   </ItemGroup>
 
@@ -53,6 +56,9 @@
     <TypeScriptCompile Include="ClientApp\app\components\mortgage\mortgage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\delete\realestatepropertydelete.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\realestateproperty\edit\realestatepropertyedit.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\percentOfOption.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\genericDropDownType.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\_model\mortgage.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\scheduleType.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_model\feeType.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\_shared\feeTypePicker\feeTypePicker.component.ts" />

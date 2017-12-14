@@ -4,12 +4,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Fee } from '../_model/fee.model'
+import { RealEstateProperty } from '../_model/realestateproperty.model'
+import { Mortgage } from '../_model/mortgage.model'
+import { GenericDropDownType } from '../_model/genericDropDownType.model'
 
 @Injectable()
 export class FeeService {
 
     public myDetail: Fee;
-    public headers: Headers
+    public headers: Headers;
 
     constructor(private http: Http) {
         this.headers = new Headers();
@@ -71,20 +74,24 @@ export class FeeService {
             }
         },
             error => console.log(error)
-
         );
     }
 
 
+    calculateMonthlyFeeAmout(fee: Fee): number {
 
-
-    calculateMonthlyFeeAmout(fee: Fee) {
+        var monthlyAmount: number = 0;
 
         if (fee != null) {
 
-            var monthlyAmount: number = 0
-            var annualAmount: number = 0
-            var baseRate: number = fee.amount;
+            var annualAmount: number = 0;
+            var baseRate: number = 0;
+
+            if (fee.feeTypeID == 2) {
+                baseRate = fee.percentBaseValue * (fee.percentRate / 100);
+            } else {
+                baseRate = fee.amount;
+            }
 
             switch (fee.scheduleTypeID) {
                 case 1:
@@ -97,8 +104,8 @@ export class FeeService {
                     annualAmount = baseRate * 365;
                     break;
                 case 3:
-                    monthlyAmount = (baseRate * 52) / 12;
-                    annualAmount = baseRate * 52;
+                    monthlyAmount = (baseRate * 52.1429) / 12;
+                    annualAmount = baseRate * 52.1429;
                     break;
                 case 4:
                     monthlyAmount = (baseRate * 26) / 12;
@@ -120,10 +127,60 @@ export class FeeService {
                     monthlyAmount = baseRate;
                     annualAmount = baseRate;
             }
-
-            return monthlyAmount;
         }
+        return monthlyAmount;
+
+    }
+
+    calculateAnnualFeeAmout(fee: Fee): number {
+
+        var annualAmount: number = 0;
+
+        if (fee != null) {
+
+            var annualAmount: number = 0;
+            var baseRate: number = fee.amount;
+
+            switch (fee.scheduleTypeID) {
+                case 1:
+                case 8:
+                    annualAmount = baseRate;
+                    break;
+                case 2:
+                    annualAmount = baseRate * 365;
+                    break;
+                case 3:
+                    annualAmount = baseRate * 52.1429;
+                    break;
+                case 4:
+                    annualAmount = baseRate * 26;
+                    break;
+                case 5:
+                    annualAmount = baseRate * 12;
+                    break;
+                case 6:
+                    annualAmount = baseRate * 6;
+                    break;
+                case 7:
+                    annualAmount = baseRate * 4;
+                    break;
+                default:
+                    annualAmount = baseRate;
+            }
+        }
+        return annualAmount;
+
+    }
 
 
+    getParentClassOptions(parentClassTypeId: number, myFee: Fee) {
+
+        switch (Number(parentClassTypeId)) {
+            case 2:
+                return this.http.get('/api/Mortgage/PercentOfOptions/' + String(myFee.mortgageID));
+            case 1:
+                return this.http.get('/api/RealEstateProperty/PercentOfOptions/' + String(myFee.realEstatePropertyID));
+        }
+        return this.http.get('/api/RealEstateProperty/PercentOfOptions/0');
     }
 }  

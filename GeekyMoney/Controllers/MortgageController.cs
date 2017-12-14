@@ -54,5 +54,13 @@ namespace GeekyMoney.Angular.Controllers
             _service.Delete(id);
             return Ok();
         }
+
+
+        // GET: api/Mortgage/PercentOfOptions/0
+        [HttpGet("[action]/{id}")]
+        public IEnumerable<PercentOfOption> PercentOfOptions(int id)
+        {
+            return _service.PercentOfOptions(id);
+        }
     }
 }

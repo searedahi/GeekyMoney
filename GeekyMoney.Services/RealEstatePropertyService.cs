@@ -3,6 +3,9 @@ using GeekyMoney.Model;
 using System.Collections.Generic;
 using AutoMapper;
 using GeekyMoney.Data.Services;
+using System;
+using System.Reflection;
+using GeekyMoney.Tools;
 
 namespace GeekyMoney.Services
 {
@@ -40,10 +43,30 @@ namespace GeekyMoney.Services
             return _dataService.GetAll();
         }
 
-
         public IRealEstateProperty Update(IRealEstateProperty domainModel)
         {
             return _dataService.Update(domainModel);
+        }
+
+        public IEnumerable<PercentOfOption> PercentOfOptions(int id)
+        {
+            var result = new List<PercentOfOption>();
+            RealEstateProperty targetRealProp;
+
+            if (id > 0)
+            {
+                targetRealProp = (RealEstateProperty) _dataService.Get(id);
+            }
+            else
+            {
+                targetRealProp = new RealEstateProperty();
+            }
+
+            var opts = new PercentOfOptionBuilder<RealEstateProperty>();
+
+            result = opts.GetPercentOfOptions(targetRealProp) as List<PercentOfOption>;
+
+            return result;
         }
     }
 }

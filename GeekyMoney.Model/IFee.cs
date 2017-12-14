@@ -16,8 +16,11 @@ namespace GeekyMoney.Model
         ScheduleType ScheduleType { get; set; }
         FeeType FeeType { get; set; }
 
-        decimal MonthlyTotal { get; set; }
-        decimal AnnualTotal { get; set; }
+        decimal MonthlyTotal { get; }
+        decimal AnnualTotal { get; }
 
+        decimal PercentRate { get; set; }
+        decimal PercentBaseValue { get; set; }
+        string PercentBasedOn { get; set; }
     }
 }

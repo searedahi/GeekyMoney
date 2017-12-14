@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Angular", "GeekyMoney\GeekyMoney.Angular.csproj", "{8C65C852-5A74-4AD8-99A0-4C16E6B791F0}"
 EndProject
@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Services", "Geek
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Angular.Tests", "GeekyMoney.Angular.Tests\GeekyMoney.Angular.Tests.csproj", "{ED8F88F8-EF18-4B56-9C72-882FD4091A4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekyMoney.Enums", "GeekyMoney.Enums\GeekyMoney.Enums.csproj", "{6A65DA44-C974-4737-8BE7-A8A11FB076B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeekyMoney.Enums", "GeekyMoney.Enums\GeekyMoney.Enums.csproj", "{6A65DA44-C974-4737-8BE7-A8A11FB076B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekyMoney.Tools", "GeekyMoney.Tools\GeekyMoney.Tools.csproj", "{4CB53BC2-0188-40C9-AA8B-4EF29B73DF28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{6A65DA44-C974-4737-8BE7-A8A11FB076B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A65DA44-C974-4737-8BE7-A8A11FB076B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A65DA44-C974-4737-8BE7-A8A11FB076B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CB53BC2-0188-40C9-AA8B-4EF29B73DF28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB53BC2-0188-40C9-AA8B-4EF29B73DF28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB53BC2-0188-40C9-AA8B-4EF29B73DF28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB53BC2-0188-40C9-AA8B-4EF29B73DF28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,5 +62,12 @@ namespace GeekyMoney.Angular.Controllers
             }
 
         }
+        
+        // GET: api/RealEstateProperty/PercentOfOptions/0
+        [HttpGet("[action]/{id}")]
+        public IEnumerable<PercentOfOption> PercentOfOptions(int id)
+        {
+            return _service.PercentOfOptions(id);
+        }
     }
 }

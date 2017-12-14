@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GeekyMoney.Data\GeekyMoney.Data.csproj" />
     <ProjectReference Include="..\GeekyMoney.Model\GeekyMoney.Model.csproj" />
+    <ProjectReference Include="..\GeekyMoney.Tools\GeekyMoney.Tools.csproj" />
   </ItemGroup>
 
 </Project>

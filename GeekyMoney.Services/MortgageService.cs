@@ -3,6 +3,7 @@ using GeekyMoney.Model;
 using System.Collections.Generic;
 using AutoMapper;
 using GeekyMoney.Data.Services;
+using GeekyMoney.Tools;
 
 namespace GeekyMoney.Services
 {
@@ -43,5 +44,28 @@ namespace GeekyMoney.Services
         {
             return _dataService.Delete(id);
         }
+
+
+        public IEnumerable<PercentOfOption> PercentOfOptions(int id)
+        {
+            var result = new List<PercentOfOption>();
+            Mortgage mortgage;
+
+            if (id > 0)
+            {
+                mortgage = (Mortgage)_dataService.Get(id);
+            }
+            else
+            {
+                mortgage = new Mortgage();
+            }
+
+            var opts = new PercentOfOptionBuilder<Mortgage>();
+
+            result = opts.GetPercentOfOptions(mortgage) as List<PercentOfOption>;
+
+            return result;
+        }
+
     }
 }

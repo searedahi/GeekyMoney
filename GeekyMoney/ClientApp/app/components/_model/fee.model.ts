@@ -1,4 +1,6 @@
-﻿export class Fee {
+﻿import { FeeService } from '../fee/fee.service';
+
+export class Fee {
     id: number;
     name: string;
     description: string;
@@ -9,6 +11,10 @@
     feeTypeID: number;
     realEstatePropertyID: number;
     mortgageID: number;
+
+    percentRate: number;
+    percentBaseValue: number;
+    percentBasedOn: string;
 
     monthlyTotal: number;
     annualTotal: number;
