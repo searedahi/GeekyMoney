@@ -120,7 +120,16 @@ export class FeeEditComponent {
         this.calculatePayments();
     }
     onPercentOfOptionChange(selectedValue: number) {
-        this.fee.percentBaseValue = selectedValue;
+
+        var pctOfOpt = new PercentOfOption(0, "Unknown", 0);
+
+        var pctOfOptListItem = this.percentOfOptionList.find(z => z.id == Number(selectedValue));
+
+        if (pctOfOptListItem != undefined) {
+            pctOfOpt = pctOfOptListItem;
+        }
+        
+        this.fee.percentBaseValue = pctOfOpt.value;
         this.calculatePayments();
     }
 

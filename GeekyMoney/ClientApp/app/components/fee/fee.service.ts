@@ -139,7 +139,13 @@ export class FeeService {
         if (fee != null) {
 
             var annualAmount: number = 0;
-            var baseRate: number = fee.amount;
+            var baseRate: number = 0;
+
+            if (fee.feeTypeID == 2) {
+                baseRate = fee.percentBaseValue * (fee.percentRate / 100);
+            } else {
+                baseRate = fee.amount;
+            }
 
             switch (fee.scheduleTypeID) {
                 case 1:

@@ -69,7 +69,7 @@
                 </option>
             </select>
         </div>
-        <div class="form-group col-md-4 col-xs-12">
+        <!--<div class="form-group col-md-4 col-xs-12">
             <label class="control-label"><strong>Class Options:</strong></label>
             <select class="form-control" (change)="onParentClassPercentOfOptionChange($event.target.value)">
                 <option value="0">Pick Your Class Option</option>
@@ -77,14 +77,14 @@
                     {{opt.name}}
                 </option>
             </select>
-        </div>
+        </div>-->
 
         <div class="form-group col-md-4 col-xs-12">
-            <label class="control-label"><strong>Pick An Amount:</strong></label>
+            <label class="control-label"><strong>Pick An Option:</strong></label>
             <select class="form-control" [(ngModel)]="fee.percentBasedOn" (change)="onPercentOfOptionChange($event.target.value)">
                 <option value="0">Pick Your Base Figure</option>
-                <option *ngFor="let pctOf of percentOfOptions" value={{pctOf.id}}>
-                    {{pctOf.name}}
+                <option *ngFor="let opt of parentClassPercentOfOptions" value={{opt.id}}>
+                    {{opt.name}}
                 </option>
             </select>
         </div>
