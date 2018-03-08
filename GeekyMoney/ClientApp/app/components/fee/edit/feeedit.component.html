@@ -25,30 +25,9 @@
         </div>
     </div>
     <div class="row">
-        <div [hidden]="this.fee.feeTypeID != 1">
-            <div class="form-group col-md-4 col-xs-12">
-                <label class="control-label"><strong>Amount</strong></label>
-                <input class="form-control" [(ngModel)]="fee.amount" required />
-            </div>
-        </div>
-        <div [hidden]="this.fee.feeTypeID != 2">
-            <div class="form-group col-md-2 col-xs-12">
-                <label class="control-label"><strong>Rate:</strong></label>
-                <input type="text" class="form-control" [(ngModel)]="fee.percentRate" (ngModelChange)="calculatePayments()" />
-            </div>
-            <div class="form-group col-md-2 col-xs-12">
-                <label class="control-label"><strong>Base Value:</strong></label>
-                <input type="text" class="form-control" [(ngModel)]="fee.percentBaseValue" (ngModelChange)="calculatePayments()" />
-            </div>
-        </div>
-
-
-        <div class="form-group col-md-2 col-xs-12">
-            <label class="control-label"><strong>Fee Type</strong></label>
-            <div>
-                <switch [status]="fee.feeTypeID == 1" onText="$" onColor="sky-blue" offText="%" offColor="yellow" (statusChange)="onFeeTypeChange()"></switch>
-            </div>
-            <!--<input  [(ngModel)]="fee.feeTypeId" />-->
+        <div class="form-group col-md-4 col-xs-12">
+            <label class="control-label"><strong>Amount</strong></label>
+            <input class="form-control" [(ngModel)]="fee.amount" (blur)="calculatePayments()" />
         </div>
         <div class="form-group col-md-2 col-xs-12">
             <label class="control-label"><strong>Fee Schedule</strong></label>
@@ -58,32 +37,31 @@
                 </option>
             </select>
         </div>
+        <div class="form-group col-md-2 col-xs-12">
+            <label class="control-label"><strong>Fee Type</strong></label>
+            <div>
+                <switch [status]="fee.feeTypeID == 1" onText="$" onColor="sky-blue" offText="%" offColor="yellow" (statusChange)="onFeeTypeChange()"></switch>
+            </div>
+        </div>
+
     </div>
     <div class="row" [hidden]="this.fee.feeTypeID != 2">
+        <div class="form-group col-md-2 col-xs-12">
+            <label class="control-label"><strong>Rate:</strong></label>
+            <input type="text" class="form-control" [(ngModel)]="fee.percentRate" (ngModelChange)="calculatePayments()" />
+        </div>
         <div class="form-group col-md-4 col-xs-12">
             <label class="control-label"><strong>Parent Class:</strong></label>
             <select class="form-control" [(ngModel)]="fee.parentClass" (change)="onParentClassChange($event.target.value)">
-                <option value="0">Pick Your Parent Class</option>
-                <option *ngFor="let cls of parentClassOptions" value={{cls.id}}>
+                <option *ngFor="let cls of parentClassOptions" value={{cls.name}}>
                     {{cls.name}}
                 </option>
             </select>
         </div>
-        <!--<div class="form-group col-md-4 col-xs-12">
-            <label class="control-label"><strong>Class Options:</strong></label>
-            <select class="form-control" (change)="onParentClassPercentOfOptionChange($event.target.value)">
-                <option value="0">Pick Your Class Option</option>
-                <option *ngFor="let opt of parentClassPercentOfOptions" value={{opt.id}}>
-                    {{opt.name}}
-                </option>
-            </select>
-        </div>-->
-
         <div class="form-group col-md-4 col-xs-12">
             <label class="control-label"><strong>Pick An Option:</strong></label>
             <select class="form-control" [(ngModel)]="fee.percentBasedOn" (change)="onPercentOfOptionChange($event.target.value)">
-                <option value="0">Pick Your Base Figure</option>
-                <option *ngFor="let opt of parentClassPercentOfOptions" value={{opt.id}}>
+                <option *ngFor="let opt of percentOfOptionList" value={{opt.name}} title={{opt.displayAs}}>
                     {{opt.name}}
                 </option>
             </select>

@@ -14,12 +14,10 @@ import { PercentOfOption } from '../../_model/percentOfOption.model';
     styleUrls: ['../fee.component.css']
 })
 export class FeeEditComponent {
-
     public fee: Fee = new Fee();
     private id: string;
     private returnToRealEstateProperty: boolean;
-    private enableTemplateToggle: boolean;    
-
+    private enableTemplateToggle: boolean;
 
     private allScheduleTypes: Array<ScheduleType> = [
         new ScheduleType(1, 'OneTime')
@@ -31,24 +29,14 @@ export class FeeEditComponent {
         , new ScheduleType(7, 'Quarterly')
         , new ScheduleType(8, 'Annually')
     ];
-
     private percentOfOptions: Array<GenericDropDownType> = [];
     private parentClassOptions: Array<GenericDropDownType> = [];
-    private parentClassPercentOfOptions: Array<GenericDropDownType> = [];
     private percentOfOptionList: Array<PercentOfOption> = [];
-
 
     constructor(private feeService: FeeService, private route: ActivatedRoute, private redirect: Router) {
 
-
-        this.parentClassPercentOfOptions.push(new GenericDropDownType(1, "PropertyNameHere"));
-
         this.parentClassOptions.push(new GenericDropDownType(1, "Real Estate Property"));
         this.parentClassOptions.push(new GenericDropDownType(2, "Mortgage"));
-        
-
-        this.percentOfOptions.push(new GenericDropDownType(1234.56, "Matts Hale - Property Taxes - $1,234.56"));
-        this.percentOfOptions.push(new GenericDropDownType(999.88, "Matts Hale - Hotel Taxes - $999.88"));
 
         this.route.params.subscribe((params: Params) => {
             this.id = params['id'];
@@ -59,9 +47,11 @@ export class FeeEditComponent {
             if (this.id != "0") {
                 // Editing a fee
                 this.feeService.getDetail(this.id).subscribe(data => {
-                    this.fee = data.json();                    
+                    this.fee = data.json();
                     this.enableTemplateToggle = false;
-
+                    if (this.fee.percentBasedOn != null) {
+                        this.onParentClassChange(this.fee.parentClass);
+                    }
                 },
                     error => console.log(error)
                 );
@@ -78,7 +68,7 @@ export class FeeEditComponent {
                 });
             }
 
-
+            this.calculatePayments();
         }
     }
 
@@ -104,58 +94,10 @@ export class FeeEditComponent {
         }
     }
 
-
-
-    onDeductibleFlagChange() {
-        this.fee.isDeductible = !this.fee.isDeductible;
-    }
-    onTemplateFlagChange() {
-        this.fee.isTemplate = !this.fee.isTemplate;
-    }
-    onFeeTypeChange() {
-        this.fee.feeTypeID = this.fee.feeTypeID == 1 ? 2 : 1;
-        this.calculatePayments();
-    }
-    onScheduleTypeChange() {
-        this.calculatePayments();
-    }
-    onPercentOfOptionChange(selectedValue: number) {
-
-        var pctOfOpt = new PercentOfOption(0, "Unknown", 0);
-
-        var pctOfOptListItem = this.percentOfOptionList.find(z => z.id == Number(selectedValue));
-
-        if (pctOfOptListItem != undefined) {
-            pctOfOpt = pctOfOptListItem;
-        }
-        
-        this.fee.percentBaseValue = pctOfOpt.value;
-        this.calculatePayments();
-    }
-
-    onParentClassChange(selectedValue: number) {
-        this.parentClassPercentOfOptions.length = 0;
-        this.feeService.getParentClassOptions(selectedValue, this.fee).subscribe(data => {
-            this.percentOfOptionList = data.json();
-            this.percentOfOptionList.forEach(opt => this.parentClassPercentOfOptions.push(new GenericDropDownType(opt.id, opt.name)));
-        },
-            error => console.log(error)
-        );
-
-    }
-
-    onParentClassPercentOfOptionChange(selectedValue: number) {
-        //this.parentClassPercentOfOptions.length = 0;
-        //this.parentClassPercentOfOptions = this.feeService.getParentClassOptions(selectedValue);
-        this.calculatePayments();
-    }
-
     calculatePayments() {
         this.fee.monthlyTotal = this.feeService.calculateMonthlyFeeAmout(this.fee);
         this.fee.annualTotal = this.feeService.calculateAnnualFeeAmout(this.fee);
     }
-
-
 
     navigate() {
         if (this.returnToRealEstateProperty) {
@@ -169,7 +111,43 @@ export class FeeEditComponent {
         this.redirect.navigateByUrl('/fees');
     }
 
+    onDeductibleFlagChange() {
+        this.fee.isDeductible = !this.fee.isDeductible;
+    }
+
+    onTemplateFlagChange() {
+        this.fee.isTemplate = !this.fee.isTemplate;
+    }
+
+    onFeeTypeChange() {
+        this.fee.feeTypeID = this.fee.feeTypeID == 1 ? 2 : 1;
+        this.calculatePayments();
+    }
+
+    onScheduleTypeChange() {
+        this.calculatePayments();
+    }
+
+    onParentClassChange(selectedEvent: string) {
+        this.feeService.getParentClassOptions(selectedEvent, this.fee).subscribe(data => {
+            this.percentOfOptionList = data.json();
+        },
+            error => console.log(error)
+        );
+    }
+
+    onPercentOfOptionChange(selectedEvent: string) {
+
+        var pctOfOpt = new PercentOfOption(0, "Unknown", 0, "Unknown");
+
+        var pctOfOptListItem = this.percentOfOptionList.find(z => z.name == selectedEvent);
+
+        if (pctOfOptListItem != undefined) {
+            pctOfOpt = pctOfOptListItem;
+        }
+
+        this.fee.amount = pctOfOpt.value;
+        this.calculatePayments();
+    }
+
 }
-
-
-

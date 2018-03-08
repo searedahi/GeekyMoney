@@ -88,7 +88,7 @@ export class FeeService {
             var baseRate: number = 0;
 
             if (fee.feeTypeID == 2) {
-                baseRate = fee.percentBaseValue * (fee.percentRate / 100);
+                baseRate = fee.amount * (fee.percentRate / 100);
             } else {
                 baseRate = fee.amount;
             }
@@ -142,7 +142,7 @@ export class FeeService {
             var baseRate: number = 0;
 
             if (fee.feeTypeID == 2) {
-                baseRate = fee.percentBaseValue * (fee.percentRate / 100);
+                baseRate = fee.amount * (fee.percentRate / 100);
             } else {
                 baseRate = fee.amount;
             }
@@ -179,12 +179,12 @@ export class FeeService {
     }
 
 
-    getParentClassOptions(parentClassTypeId: number, myFee: Fee) {
+    getParentClassOptions(parentClass: string, myFee: Fee) {
 
-        switch (Number(parentClassTypeId)) {
-            case 2:
+        switch (parentClass) {
+            case "Mortgage":
                 return this.http.get('/api/Mortgage/PercentOfOptions/' + String(myFee.mortgageID));
-            case 1:
+            case "Real Estate Property":
                 return this.http.get('/api/RealEstateProperty/PercentOfOptions/' + String(myFee.realEstatePropertyID));
         }
         return this.http.get('/api/RealEstateProperty/PercentOfOptions/0');

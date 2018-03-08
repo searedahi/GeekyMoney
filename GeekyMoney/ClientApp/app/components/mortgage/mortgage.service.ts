@@ -3,7 +3,7 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { Mortgage } from './mortgage.model'
+import { Mortgage } from '../_model/mortgage.model'
 
 @Injectable()
 export class MortgageService {

@@ -1,21 +1,26 @@
-﻿namespace GeekyMoney.Model
+﻿using System.Collections.Generic;
+
+namespace GeekyMoney.Model
 {
-    public class RealEstateScenario : IRealEstateScenario
+    public class Scenario : IScenario
     {
-        public IMortgage Mortgage { get; set; }
-        public IRealEstateProperty RealEstateProperty { get; set; }
+        public virtual IEnumerable<IMortgage> Mortgages { get; set; }
+        public virtual IEnumerable<IRealEstateProperty> RealEstateProperties { get; set; }
+        public virtual IEnumerable<IRentalRate> RentalRates { get; set; }
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public IRentalRate RentalRate { get; set; }
         public IRealEstateScenarioKPI ScenarioKPI { get; set; }
+        public IBlendedRentalRate BlendedRentalRate { get; set; }
 
         private decimal ExpectedIncome; //Expected income
 
-        public RealEstateScenario(bool isFakeConstructorForSpeed)
+        public Scenario(bool isFakeConstructorForSpeed)
         {
-            Mortgage = new Mortgage();
-            RealEstateProperty = new RealEstateProperty();
+            Mortgages = new List<IMortgage>();
+            RealEstateProperties = new List<IRealEstateProperty>();
+            RentalRates = new List<IRentalRate>();
         }
+        public Scenario() { }
     }
 }

@@ -1,11 +1,12 @@
-﻿namespace GeekyMoney.Model
+﻿using System.Linq;
+
+namespace GeekyMoney.Model
 {
     public class RealEstateScenarioKPI : IRealEstateScenarioKPI
     {
-        private IRealEstateScenario _scenario;
+        private IScenario _scenario;        
 
-
-        public RealEstateScenarioKPI(IRealEstateScenario scenario)
+        public RealEstateScenarioKPI(IScenario scenario)
         {
             _scenario = scenario;
         }
@@ -17,7 +18,7 @@
         {
             get
             {
-                return (_scenario.RealEstateProperty.PurchasePrice / AnnualRentalIncome) / 100; // Convert to percent
+                return (_scenario.RealEstateProperties.Sum(p=>p.PurchasePrice) / AnnualRentalIncome) / 100; // Convert to percent
             }
         }
 
@@ -33,7 +34,7 @@
         {
             get
             {
-                return _scenario.RentalRate.RentalAmount * 12;
+                return _scenario.BlendedRentalRate.BlendedRentalAmount * 12;
             }
         }
 
@@ -65,7 +66,7 @@
         {
             get
             {
-                return _scenario.RealEstateProperty.TotalMonthlyCost / _scenario.RealEstateProperty.SquareFeet;
+                return _scenario.RealEstateProperties.Sum(p=>p.TotalMonthlyCost) / _scenario.RealEstateProperties.Sum(p => p.SquareFeet);
             }
         }
         public string CostPerSqFtFormatted
@@ -79,7 +80,7 @@
         {
             get
             {
-                return _scenario.RealEstateProperty.PurchasePrice / _scenario.RealEstateProperty.SquareFeet;
+                return _scenario.RealEstateProperties.Sum(p => p.PurchasePrice) / _scenario.RealEstateProperties.Sum(p => p.SquareFeet);
             }
         }
         public string PricePerSqFtFormatted
@@ -93,7 +94,7 @@
         {
             get
             {
-                return _scenario.RealEstateProperty.MarketValue / _scenario.RealEstateProperty.SquareFeet;
+                return _scenario.RealEstateProperties.Sum(p => p.MarketValue) / _scenario.RealEstateProperties.Sum(p => p.SquareFeet);
             }
         }
         public string MarketValuePerSqFtFormatted
@@ -108,7 +109,7 @@
         {
             get
             {
-                return MonthlyRentalIncome / _scenario.RealEstateProperty.SquareFeet;
+                return MonthlyRentalIncome / _scenario.RealEstateProperties.Sum(p => p.SquareFeet);
             }
         }
         public string RentalRatePerSqFtFormatted
@@ -123,7 +124,7 @@
         {
             get
             {
-                return _scenario.Mortgage.LoanAmount / _scenario.RealEstateProperty.MarketValue;
+                return _scenario.Mortgages.Sum(p => p.LoanAmount) / _scenario.RealEstateProperties.Sum(p => p.MarketValue);
             }
         }
         public string LoanToValueRatioFormatted
@@ -180,7 +181,7 @@
         {
             get
             {
-                return AnnualRentalIncome / (_scenario.Mortgage.DownPayment + _scenario.Mortgage.CashToClose);
+                return AnnualRentalIncome / (_scenario.Mortgages.Sum(p => p.DownPayment) + _scenario.Mortgages.Sum(p => p.CashToClose));
             }
         }
         public string CashOnCashReturnFormatted

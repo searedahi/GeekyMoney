@@ -14,8 +14,7 @@ namespace GeekyMoney.Data.Model
         public virtual int? MortgageID { get; set; }
 
         public decimal PercentRate { get; set; }
-        public decimal PercentBaseValue { get; set; }
         public string PercentBasedOn { get; set; }
-
+        public string ParentClass { get; set; }
     }
 }

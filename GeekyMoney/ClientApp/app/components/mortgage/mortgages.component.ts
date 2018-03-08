@@ -1,6 +1,6 @@
 ﻿import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import { Mortgage } from './mortgage.model';
+import { Mortgage } from '../_model/mortgage.model';
 import { MortgageService } from './mortgage.service'
 
 

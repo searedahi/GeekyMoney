@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Mortgage } from '../mortgage.model';
+import { Mortgage } from '../../_model/mortgage.model';
 import { MortgageService } from '../mortgage.service';
 
 @Component({

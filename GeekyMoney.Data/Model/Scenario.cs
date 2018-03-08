@@ -1,9 +1,13 @@
-﻿namespace GeekyMoney.Data.Model
+﻿using System.Collections.Generic;
+
+namespace GeekyMoney.Data.Model
 {
     public class Scenario : BaseGeekyDataModel
     {
-        public RealEstateProperty RealEstateProperty { get; set; }
-        public Mortgage Mortgage { get; set; }
+        public virtual IEnumerable<RealEstateProperty> RealEstateProperties { get; set; }
+
+        public virtual IEnumerable<Mortgage> Mortgages { get; set; }
+
         public RentalRate RentalRate { get; set; }
     }
 }

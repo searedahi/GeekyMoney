@@ -17,21 +17,21 @@ namespace GeekyMoney.Angular.Controllers
         {
             _service = new MortgageService(context, mapper);
         }
-        // GET: api/Mortgage
+        // GET: api/Mortgages
         [HttpGet]
         public IEnumerable<IMortgage> Get()
         {
             return _service.GetAll();
         }
 
-        // GET: api/Mortgage/5
+        // GET: api/Mortgages/5
         [HttpGet("{id}")]
         public IMortgage Get(int id)
         {
             return _service.Get(id);
         }
         
-        // POST: api/Mortgage
+        // POST: api/Mortgages
         [HttpPost]
         public IActionResult Post([FromBody]Mortgage value)
         {
@@ -39,7 +39,7 @@ namespace GeekyMoney.Angular.Controllers
             return Ok();
         }
         
-        // PUT: api/Mortgage/5
+        // PUT: api/Mortgages/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Mortgage value)
         {
@@ -47,7 +47,7 @@ namespace GeekyMoney.Angular.Controllers
             return Ok();
         }
         
-        // DELETE: api/Mortgage/5
+        // DELETE: api/Mortgages/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -56,7 +56,7 @@ namespace GeekyMoney.Angular.Controllers
         }
 
 
-        // GET: api/Mortgage/PercentOfOptions/0
+        // GET: api/Mortgages/PercentOfOptions/0
         [HttpGet("[action]/{id}")]
         public IEnumerable<PercentOfOption> PercentOfOptions(int id)
         {

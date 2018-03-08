@@ -24,7 +24,7 @@ namespace GeekyMoney.Services
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 
-            CreateMap<Data.Model.Scenario, RealEstateScenario>()
+            CreateMap<Data.Model.Scenario, Scenario>()
                 .ReverseMap()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
 

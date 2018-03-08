@@ -20,7 +20,7 @@ namespace GeekyMoney.Model
         decimal AnnualTotal { get; }
 
         decimal PercentRate { get; set; }
-        decimal PercentBaseValue { get; set; }
         string PercentBasedOn { get; set; }
+        string ParentClass { get; set; }
     }
 }

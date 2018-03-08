@@ -30,7 +30,7 @@ namespace GeekyMoney.Tools
                 if (IsNumeric(prop.PropertyType))
                 {
                     var val = Convert.ToDecimal(prop.GetValue(genericObject, null));
-                    optList.Add(new PercentOfOption(i, val, $"{prop.Name} - {val}"));
+                    optList.Add(new PercentOfOption(i, val, prop.Name, $"{prop.Name} - {val}"));
                     i++;
                 }
                 else if (prop.PropertyType == typeof(IEnumerable<Fee>))
@@ -39,7 +39,7 @@ namespace GeekyMoney.Tools
 
                     foreach (var fe in propFees)
                     {
-                        optList.Add(new PercentOfOption(i, fe.MonthlyTotal, $"{fe.Name} - {fe.MonthlyTotal}"));
+                        optList.Add(new PercentOfOption(i, fe.MonthlyTotal, fe.Name, $"{fe.Name} - {fe.MonthlyTotal}"));
                         i++;
                     }
                 }

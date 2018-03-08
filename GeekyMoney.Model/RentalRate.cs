@@ -1,12 +1,31 @@
-﻿using GeekyMoney.Enums;
+﻿using System;
+using GeekyMoney.Enums;
 
 namespace GeekyMoney.Model
 {
     public class RentalRate : IRentalRate
     {
-        decimal RentalAmount { get; set; }
-        decimal IRentalRate.RentalAmount { get; set; }
-        ScheduleType Schedule { get; set; }
-        ScheduleType IRentalRate.Schedule { get; set; }
+        // Data Persisted Properties
+        public decimal RentalAmount { get; set; }
+        public ScheduleType Schedule { get; set; }
+        public DateTime BeginDate { get; set; }
+        public DateTime EndDate { get; set; }
+
+        // Calculated Properties
+        private int DaysInYear = 365;
+        public int DaysApplied
+        {
+            get
+            {
+                return (BeginDate - EndDate).Days;
+            }
+        }
+        public decimal AnnualWeight
+        {
+            get
+            {
+                return DaysApplied / DaysInYear;
+            }
+        }
     }
 }

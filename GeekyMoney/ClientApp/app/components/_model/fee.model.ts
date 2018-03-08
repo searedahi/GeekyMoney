@@ -15,6 +15,7 @@ export class Fee {
     percentRate: number;
     percentBaseValue: number;
     percentBasedOn: string;
+    parentClass: string;
 
     monthlyTotal: number;
     annualTotal: number;

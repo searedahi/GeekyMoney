@@ -2,7 +2,7 @@
 
 namespace GeekyMoney.Services
 {
-    public interface IRealEstateScenarioService : IGeekyService<IRealEstateScenario>
+    public interface IRealEstateScenarioService : IGeekyService<IScenario>
     {
     }
 }

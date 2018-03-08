@@ -17,21 +17,21 @@ namespace GeekyMoney.Angular.Controllers
             _service = new RealEstatePropertyService(context, mapper);
         }
 
-        // GET: api/RealEstateProperty
+        // GET: api/RealEstateProperties
         [HttpGet]
         public IEnumerable<IRealEstateProperty> Get()
         {
             return _service.GetAll();
         }
 
-        // GET: api/RealEstateProperty/5
+        // GET: api/RealEstateProperties/5
         [HttpGet("{id}")]
         public IRealEstateProperty Get(int id)
         {
             return _service.Get(id);
         }
 
-        // POST: api/RealEstateProperty
+        // POST: api/RealEstateProperties
         [HttpPost]
         public IActionResult Post([FromBody]RealEstateProperty value)
         {
@@ -39,7 +39,7 @@ namespace GeekyMoney.Angular.Controllers
             return Ok();
         }
 
-        // PUT: api/RealEstateProperty/5
+        // PUT: api/RealEstateProperties/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]RealEstateProperty value)
         {
@@ -47,7 +47,7 @@ namespace GeekyMoney.Angular.Controllers
             return Ok(); ;
         }
 
-        // DELETE: api/RealEstateProperty/5
+        // DELETE: api/RealEstateProperties/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -63,7 +63,7 @@ namespace GeekyMoney.Angular.Controllers
 
         }
         
-        // GET: api/RealEstateProperty/PercentOfOptions/0
+        // GET: api/RealEstateProperties/PercentOfOptions/0
         [HttpGet("[action]/{id}")]
         public IEnumerable<PercentOfOption> PercentOfOptions(int id)
         {

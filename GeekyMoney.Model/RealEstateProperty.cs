@@ -29,14 +29,14 @@ namespace GeekyMoney.Model
         public string TruliaId { get; set; }
         public decimal Rating { get; set; }
 
-        //public IEnumerable<RealEstateProperty> Units { get; set; }
+        //public IEnumerable<RealEstateProperties> Units { get; set; }
         //public IEnumerable<IRentalRate> RentSchedules { get; set; }
         public IEnumerable<Fee> PropertyFees { get; set; }
 
 
         public RealEstateProperty()
         {
-            //Units = new List<RealEstateProperty>();
+            //Units = new List<RealEstateProperties>();
             //RentSchedules = new List<IRentalRate>();
             PropertyFees = new List<Fee>();
         }

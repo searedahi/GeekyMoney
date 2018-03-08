@@ -19,7 +19,7 @@ namespace GeekyMoney.Services
             _dataService = new RealEstateScenarioDataService(_context, _mapper);
         }
 
-        public IRealEstateScenario Create(IRealEstateScenario domainModel)
+        public IScenario Create(IScenario domainModel)
         {
             return _dataService.Create(domainModel);
         }
@@ -29,17 +29,17 @@ namespace GeekyMoney.Services
             return _dataService.Delete(id);
         }
 
-        public IRealEstateScenario Get(int id)
+        public IScenario Get(int id)
         {
             return _dataService.Get(id);
         }
 
-        public IEnumerable<IRealEstateScenario> GetAll()
+        public IEnumerable<IScenario> GetAll()
         {
             return _dataService.GetAll();
         }
 
-        public IRealEstateScenario Update(IRealEstateScenario domainModel)
+        public IScenario Update(IScenario domainModel)
         {
             return _dataService.Update(domainModel);
         }

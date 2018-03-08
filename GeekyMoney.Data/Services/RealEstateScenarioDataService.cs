@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GeekyMoney.Data.Services
 {
-    public class RealEstateScenarioDataService: IRealEstateScenarioDataService
+    public class RealEstateScenarioDataService: IScenarioDataService
     {
         private GeekyMoneyContext _context;
         private readonly IMapper _mapper;
@@ -17,14 +17,14 @@ namespace GeekyMoney.Data.Services
             _context = context;
         }
 
-        public IRealEstateScenario Create(IRealEstateScenario domainModel)
+        public IScenario Create(IScenario domainModel)
         {
-            var dbScenario = _mapper.Map<RealEstateScenario, Data.Model.Scenario>(domainModel as RealEstateScenario);
+            var dbScenario = _mapper.Map<Scenario, Data.Model.Scenario>(domainModel as Scenario);
 
             _context.Scenario.Add(dbScenario);
             var recordCount = _context.SaveChanges();
 
-            return _mapper.Map<Data.Model.Scenario, RealEstateScenario>(dbScenario);
+            return _mapper.Map<Data.Model.Scenario,Scenario>(dbScenario);
         }
 
         public bool Delete(int id)
@@ -35,37 +35,37 @@ namespace GeekyMoney.Data.Services
             return recordCount > 0;
         }
 
-        public IRealEstateScenario Get(int id)
+        public IScenario Get(int id)
         {
             var dbScenario = _context.Scenario
-                .Include(s=>s.RealEstateProperty)                
+                .Include(s=>s.RealEstateProperties)                
                 .FirstOrDefault(p => p.ID.Equals(id));
-            var domModel = _mapper.Map<Data.Model.Scenario, RealEstateScenario>(dbScenario);
+            var domModel = _mapper.Map<Data.Model.Scenario, Scenario>(dbScenario);
             return domModel;
         }
 
-        public IEnumerable<IRealEstateScenario> GetAll()
+        public IEnumerable<IScenario> GetAll()
         {
-            var scenarios = new List<IRealEstateScenario>();
+            var scenarios = new List<IScenario>();
 
             foreach (var scen in _context.Scenario.ToList())
             {
-                var domainScenario = _mapper.Map<Data.Model.Scenario, RealEstateScenario>(scen);
+                var domainScenario = _mapper.Map<Data.Model.Scenario,Scenario>(scen);
                 scenarios.Add(domainScenario);
             }
 
             return scenarios;
         }
 
-        public IRealEstateScenario Update(IRealEstateScenario domainModel)
+        public IScenario Update(IScenario domainModel)
         {
-            var dbScenario = _mapper.Map<RealEstateScenario, Data.Model.Scenario>(domainModel as RealEstateScenario);
+            var dbScenario = _mapper.Map<Scenario, Data.Model.Scenario>(domainModel as Scenario);
 
             _context.Scenario.Attach(dbScenario);
             _context.Entry(dbScenario).State = EntityState.Modified;
             var recordCount = _context.SaveChanges();
 
-            return _mapper.Map<Data.Model.Scenario, RealEstateScenario>(dbScenario);
+            return _mapper.Map<Data.Model.Scenario, Scenario>(dbScenario);
         }
     }
 }

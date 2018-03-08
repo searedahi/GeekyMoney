@@ -13,9 +13,8 @@ namespace GeekyMoney.Model
         public int ScheduleTypeID { get; set; }
         public int FeeTypeID { get; set; }
         public decimal PercentRate { get; set; }
-        public decimal PercentBaseValue { get; set; }
         public string PercentBasedOn { get; set; }
-
+        public string ParentClass { get; set; }
 
         public virtual int? RealEstatePropertyID { get; set; }
         public virtual int? MortgageID { get; set; }
@@ -29,34 +28,39 @@ namespace GeekyMoney.Model
             {
                 var monthlyAmount = 0M;
 
+                if (FeeTypeID == 2)
+                {
+                    monthlyAmount = Amount * (PercentRate / 100);
+                }
+                else
+                {
+                    monthlyAmount = Amount;
+                }
+
                 switch (ScheduleTypeID)
                 {
                     case 1:
-                        monthlyAmount = Amount / 12;
+                        monthlyAmount = monthlyAmount / 12;
                         break;
                     case 2:
-                        monthlyAmount = (Amount * 365) / 12;
+                        monthlyAmount = (monthlyAmount * 365) / 12;
                         break;
                     case 3:
-                        monthlyAmount = (Amount * 52) / 12;
+                        monthlyAmount = (monthlyAmount * 52) / 12;
                         break;
                     case 4:
-                        monthlyAmount = (Amount * 26) / 12;
-                        break;
-                    case 5:
-                        monthlyAmount = Amount;
+                        monthlyAmount = (monthlyAmount * 26) / 12;
                         break;
                     case 6:
-                        monthlyAmount = Amount / 2;
+                        monthlyAmount = monthlyAmount / 2;
                         break;
                     case 7:
-                        monthlyAmount = Amount / 3;
+                        monthlyAmount = monthlyAmount / 3;
                         break;
                     case 8:
-                        monthlyAmount = Amount / 12;
+                        monthlyAmount = monthlyAmount / 12;
                         break;
                     default:
-                        monthlyAmount = Amount;
                         break;
                 }
 

@@ -24,6 +24,11 @@ import { FeePickerComponent } from './components/fee/picker/feepicker.component'
 
 import { RatingComponent } from './components/_shared/rating/rating.component';
 
+import { ScenariosComponent } from './components/scenario/scenarios.component'
+import { ScenarioEditComponent } from './components/scenario/edit/scenarioedit.component'
+import { ScenarioDeleteComponent } from './components/scenario/delete/scenariodelete.component'
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -40,7 +45,10 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
         FeeEditComponent,
         FeeDeleteComponent,
         FeePickerComponent,
-        RatingComponent
+        RatingComponent,
+        ScenariosComponent,
+        ScenarioEditComponent,
+        ScenarioDeleteComponent,
     ],
     imports: [
         CommonModule,
@@ -60,6 +68,9 @@ import { RatingComponent } from './components/_shared/rating/rating.component';
             { path: 'fee/templates', component: FeesComponent },
             { path: 'fee/edit/:id', component: FeeEditComponent },
             { path: 'fee/delete/:id', component: FeeDeleteComponent },
+            { path: 'scenarios', component: ScenariosComponent },
+            { path: 'scenario/edit/:id', component: ScenarioEditComponent },
+            { path: 'scenario/delete/:id', component: ScenarioDeleteComponent },
 
             { path: '**', redirectTo: 'home' }
         ]),

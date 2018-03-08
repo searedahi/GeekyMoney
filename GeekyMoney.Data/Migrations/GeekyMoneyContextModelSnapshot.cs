@@ -20,6 +20,22 @@ namespace GeekyMoney.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("GeekyMoney.Data.Model.BlendedRentalRate", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("ScheduleTypeID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("BlendedRentalRate");
+                });
+
             modelBuilder.Entity("GeekyMoney.Data.Model.Fee", b =>
                 {
                     b.Property<int>("ID")
@@ -39,7 +55,7 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("PercentBaseValue");
+                    b.Property<string>("ParentClass");
 
                     b.Property<string>("PercentBasedOn");
 
@@ -75,11 +91,15 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<decimal>("PrincipleAmount");
 
+                    b.Property<int?>("ScenarioID");
+
                     b.Property<double>("TermInMonths");
 
                     b.Property<double>("TermInYears");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ScenarioID");
 
                     b.ToTable("Mortgage");
                 });
@@ -123,6 +143,8 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<string>("RedFinId");
 
+                    b.Property<int?>("ScenarioID");
+
                     b.Property<decimal>("SquareFeet");
 
                     b.Property<decimal>("TotalMonthlyCost");
@@ -133,6 +155,8 @@ namespace GeekyMoney.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("ScenarioID");
+
                     b.ToTable("RealEstateProperty");
                 });
 
@@ -141,7 +165,13 @@ namespace GeekyMoney.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("BeginDate");
+
+                    b.Property<int?>("BlendedRentalRateID");
+
                     b.Property<string>("Description");
+
+                    b.Property<DateTime>("EndDate");
 
                     b.Property<string>("Name");
 
@@ -150,6 +180,8 @@ namespace GeekyMoney.Data.Migrations
                     b.Property<int>("ScheduleTypeID");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("BlendedRentalRateID");
 
                     b.ToTable("RentalRate");
                 });
@@ -161,19 +193,11 @@ namespace GeekyMoney.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("MortgageID");
-
                     b.Property<string>("Name");
-
-                    b.Property<int?>("RealEstatePropertyID");
 
                     b.Property<int?>("RentalRateID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("MortgageID");
-
-                    b.HasIndex("RealEstatePropertyID");
 
                     b.HasIndex("RentalRateID");
 
@@ -191,16 +215,29 @@ namespace GeekyMoney.Data.Migrations
                         .HasForeignKey("RealEstatePropertyID");
                 });
 
+            modelBuilder.Entity("GeekyMoney.Data.Model.Mortgage", b =>
+                {
+                    b.HasOne("GeekyMoney.Data.Model.Scenario")
+                        .WithMany("Mortgages")
+                        .HasForeignKey("ScenarioID");
+                });
+
+            modelBuilder.Entity("GeekyMoney.Data.Model.RealEstateProperty", b =>
+                {
+                    b.HasOne("GeekyMoney.Data.Model.Scenario")
+                        .WithMany("RealEstateProperties")
+                        .HasForeignKey("ScenarioID");
+                });
+
+            modelBuilder.Entity("GeekyMoney.Data.Model.RentalRate", b =>
+                {
+                    b.HasOne("GeekyMoney.Data.Model.BlendedRentalRate")
+                        .WithMany("RentalRates")
+                        .HasForeignKey("BlendedRentalRateID");
+                });
+
             modelBuilder.Entity("GeekyMoney.Data.Model.Scenario", b =>
                 {
-                    b.HasOne("GeekyMoney.Data.Model.Mortgage", "Mortgage")
-                        .WithMany()
-                        .HasForeignKey("MortgageID");
-
-                    b.HasOne("GeekyMoney.Data.Model.RealEstateProperty", "RealEstateProperty")
-                        .WithMany()
-                        .HasForeignKey("RealEstatePropertyID");
-
                     b.HasOne("GeekyMoney.Data.Model.RentalRate", "RentalRate")
                         .WithMany()
                         .HasForeignKey("RentalRateID");

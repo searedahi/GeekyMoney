@@ -26,7 +26,7 @@ namespace GeekyMoney.Data.Model
         public decimal Rating { get; set; }
 
         public virtual IEnumerable<Fee> PropertyFees { get; set; }
-        //public virtual IEnumerable<RealEstateProperty> Units { get; set; }
+        //public virtual IEnumerable<RealEstateProperties> Units { get; set; }
         //public virtual IEnumerable<RentalRate> RentSchedules { get; set; }
     }
 }
